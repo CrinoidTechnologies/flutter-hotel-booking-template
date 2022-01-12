@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
-import '../hotelDetailes/searchTypeList.dart';
+import '../hotel_details/searchTypeList.dart';
 
 class SearchScreen extends StatefulWidget {
   @override

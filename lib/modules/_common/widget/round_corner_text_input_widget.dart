@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:motel/app/ui/appTheme.dart';
 
 class RoundCornerTextInputWidget extends StatelessWidget {
-  const RoundCornerTextInputWidget({Key? key, this.onChange, this.hintText, this.initialValue}) : super(key: key);
+  const RoundCornerTextInputWidget(
+      {Key? key, this.onChange, this.hintText, this.initialValue})
+      : super(key: key);
   final ValueChanged<String>? onChange;
   final String? hintText;
   final String? initialValue;
@@ -30,7 +32,7 @@ class RoundCornerTextInputWidget extends StatelessWidget {
           height: 48,
           child: Center(
             child: TextFormField(
-              initialValue: initialValue??'',
+              initialValue: initialValue ?? '',
               maxLines: 1,
               onChanged: (String txt) {
                 if (onChange != null) onChange!(txt);
@@ -43,7 +45,7 @@ class RoundCornerTextInputWidget extends StatelessWidget {
               decoration: new InputDecoration(
                 errorText: null,
                 border: InputBorder.none,
-                hintText: hintText??'',
+                hintText: hintText ?? '',
                 hintStyle: TextStyle(color: AppTheme.getTheme().disabledColor),
               ),
             ),

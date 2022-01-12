@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
+import 'package:motel/modules/hotel/widget/hotel_row_three_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
 import 'widget/explore_slider_widget.dart';
 import 'widget/popular_destination_list_widget.dart';
 import 'widget/explore_item_header_widget.dart';
 import '../hotelBooking/hotelHomeScreen.dart';
-import '../hotelDetailes/hotelDetailes.dart';
-import '../hotelDetailes/searchScreen.dart';
-import '../myTrips/favoritesListView.dart';
+import '../hotel/hotel_details_page.dart';
+import '../hotel_details/searchScreen.dart';
 
 class ExplorePage extends StatefulWidget {
   final AnimationController? animationController;
@@ -179,48 +181,20 @@ class _ExplorePageState extends State<ExplorePage>
                 left: 24,
                 child: Opacity(
                   opacity: opecity,
-                  child: Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppTheme.getTheme().primaryColor,
-                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                          color: AppTheme.getTheme().dividerColor,
-                          blurRadius: 8,
-                          offset: Offset(4, 4),
-                        ),
-                      ],
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                        highlightColor: Colors.transparent,
-                        onTap: () {
-                          if (opecity != 0) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HotelHomeScreen()),
-                            );
-                          }
-                        },
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 24, right: 24, top: 8, bottom: 8),
-                            child: Text(
-                              "View Hotels",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  child: RoundCornerButtonWidget(
+                    title: 'View Hotels',
+                    bgColor: ColorHelper.primaryColor,
+                    onTap: () {
+                      if (opecity != 0) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HotelHomeScreen()),
+                        );
+                      }
+                    },
+                    padding:
+                        EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 8),
                   ),
                 ),
               ),
@@ -267,12 +241,12 @@ class _ExplorePageState extends State<ExplorePage>
         ),
       );
       list.add(
-        HotelListView(
+        HotelRowThreeWidget(
           callback: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => HotelDetailes(
+                  builder: (context) => HotelDetailsPage(
                         hotelData: f,
                       ),
                   fullscreenDialog: true),

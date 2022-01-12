@@ -3,12 +3,18 @@ import 'package:motel/app/ui/appTheme.dart';
 
 class RoundCornerButtonWidget extends StatelessWidget {
   const RoundCornerButtonWidget(
-      {Key? key, this.bgColor, this.prefixIcon, this.title, this.onTap})
+      {Key? key,
+      this.bgColor,
+      this.prefixIcon,
+      this.title,
+      this.onTap,
+      this.padding})
       : super(key: key);
   final Color? bgColor;
   final Widget? prefixIcon;
   final String? title;
   final VoidCallback? onTap;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -34,24 +40,27 @@ class RoundCornerButtonWidget extends StatelessWidget {
             if (onTap != null) onTap!();
           },
           child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                if (prefixIcon != null) ...[
-                  prefixIcon!,
-                  SizedBox(
-                    width: 4,
-                  )
+            child: Padding(
+              padding: padding ?? EdgeInsets.all(0.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  if (prefixIcon != null) ...[
+                    prefixIcon!,
+                    SizedBox(
+                      width: 4,
+                    )
+                  ],
+                  Text(
+                    title ?? '',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.white),
+                  ),
                 ],
-                Text(
-                  title ?? '',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Colors.white),
-                ),
-              ],
+              ),
             ),
           ),
         ),

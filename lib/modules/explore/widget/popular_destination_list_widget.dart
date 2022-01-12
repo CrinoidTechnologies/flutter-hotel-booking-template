@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:motel/modules/explore/widget/popular_destination_row_widget.dart';
-import '../../../app/ui/appTheme.dart';
 import '../../../models/hotelListData.dart';
 
 class PopularDestinationListWidget extends StatefulWidget {

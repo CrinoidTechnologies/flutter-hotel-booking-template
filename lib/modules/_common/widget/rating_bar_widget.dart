@@ -18,7 +18,6 @@ class RatingBarWidget extends StatelessWidget {
       rating: rating!,
       direction: Axis.horizontal,
       itemCount: 5,
-      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
       itemBuilder: (BuildContext context, int index) {
         return Icon(
           Icons.star,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:motel/modules/_common/widget/rating_widget.dart';
-import '../../app/ui/appTheme.dart';
-import '../../models/hotelListData.dart';
+import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
+import '../../../app/ui/appTheme.dart';
+import '../../../models/hotelListData.dart';
 
-class RatingView extends StatelessWidget {
+class RatingViewWidget extends StatelessWidget {
   final HotelListData? hotelData;
 
-  const RatingView({Key? key, this.hotelData}) : super(key: key);
+  const RatingViewWidget({Key? key, this.hotelData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

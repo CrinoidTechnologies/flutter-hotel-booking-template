@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:motel/app/ui/appTheme.dart';
 import 'package:motel/models/hotelListData.dart';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:motel/modules/_common/entity/slider_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../app/ui/appTheme.dart';
 import '../authentication/login_screen.dart';
@@ -20,25 +21,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 
   @override
   void initState() {
-    pageViewModelData.add(PageViewData(
-      titleText: 'Plan your trips',
-      subText: 'book one of your unique hotel to\nescape the ordinary',
-      assetsImage: 'assets/images/introduction1.png',
-    ));
-
-    pageViewModelData.add(PageViewData(
-      titleText: 'Find best deals',
-      subText:
-          'Find deals for any season from cosy\ncountry homes to city flats',
-      assetsImage: 'assets/images/introduction2.png',
-    ));
-
-    pageViewModelData.add(PageViewData(
-      titleText: 'Best travelling all time',
-      subText:
-          'Find deals for any season from cosy\ncountry homes to city flats',
-      assetsImage: 'assets/images/introduction3.png',
-    ));
+    pageViewModelData.addAll(SliderData.introSliderData);
 
     sliderTimer = Timer.periodic(Duration(seconds: 4), (timer) {
       if (currentShowIndex == 0) {
@@ -184,7 +167,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 }
 
 class PagePopup extends StatelessWidget {
-  final PageViewData? imageData;
+  final SliderData? imageData;
 
   const PagePopup({Key? key, this.imageData}) : super(key: key);
 
@@ -241,12 +224,4 @@ class PagePopup extends StatelessWidget {
       ],
     );
   }
-}
-
-class PageViewData {
-  final String? titleText;
-  final String? subText;
-  final String? assetsImage;
-
-  PageViewData({this.titleText, this.subText, this.assetsImage});
 }

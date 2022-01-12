@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:motel/modules/_common/widget/rating_widget.dart';
+import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
 

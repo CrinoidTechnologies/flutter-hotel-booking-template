@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/modules/_common/entity/slider_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../app/ui/appTheme.dart';
-import '../../onBoadring/introductionScreen.dart';
 
 class ExploreSliderWidget extends StatefulWidget {
   final double opValue;
@@ -25,21 +25,7 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
 
   @override
   void initState() {
-    pageViewModelData.add(PageViewData(
-      titleText: 'Cape Town',
-      subText: 'Extraordinary five-star\noutdoor activites',
-      assetsImage: 'assets/images/explore_2.jpg',
-    ));
-    pageViewModelData.add(PageViewData(
-      titleText: 'Find best deals',
-      subText: 'Extraordinary five-star\noutdoor activites',
-      assetsImage: 'assets/images/explore_1.jpg',
-    ));
-    pageViewModelData.add(PageViewData(
-      titleText: 'Find best deals',
-      subText: 'Extraordinary five-star\noutdoor activites',
-      assetsImage: 'assets/images/explore_3.jpg',
-    ));
+    pageViewModelData.addAll(SliderData.exploreSliderData);
 
     sliderTimer = Timer.periodic(Duration(seconds: 4), (timer) {
       if (currentShowIndex == 0) {
@@ -110,7 +96,7 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
 }
 
 class PagePopup extends StatelessWidget {
-  final PageViewData? imageData;
+  final SliderData? imageData;
   final double opValue;
 
   const PagePopup({Key? key, this.imageData, this.opValue: 0.0})

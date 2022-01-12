@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:motel/modules/_common/widget/rating_widget.dart';
+import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
+import 'package:motel/modules/hotel/widget/hotel_row_one_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
 import '../hotelBooking/calendarPopupView.dart';
 import '../hotelBooking/roomPopupView.dart';
-import '../hotelDetailes/roomBookingScreen.dart';
-import '../hotelDetailes/searchScreen.dart';
-import '../myTrips/upcomingListView.dart';
+import '../hotel_details/roomBookingScreen.dart';
+import '../hotel_details/searchScreen.dart';
 import 'filtersScreen.dart';
 
 class HotelHomeScreen extends StatefulWidget {
@@ -28,8 +28,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   DateTime endDate = DateTime.now().add(Duration(days: 5));
   bool isMap = false;
 
-  final searchBarHieght = 158.0;
-  final filterBarHieght = 52.0;
+  final searchBarHeight = 158.0;
+  final filterBarHeight = 52.0;
 
   @override
   void initState() {
@@ -38,17 +38,15 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     _animationController =
         AnimationController(duration: Duration(milliseconds: 0), vsync: this);
     scrollController.addListener(() {
-      if (context != null) {
-        if (scrollController.offset <= 0) {
-          _animationController.animateTo(0.0);
-        } else if (scrollController.offset > 0.0 &&
-            scrollController.offset < searchBarHieght) {
-          // we need around searchBarHieght scrolling values in 0.0 to 1.0
-          _animationController
-              .animateTo((scrollController.offset / searchBarHieght));
-        } else {
-          _animationController.animateTo(1.0);
-        }
+      if (scrollController.offset <= 0) {
+        _animationController.animateTo(0.0);
+      } else if (scrollController.offset > 0.0 &&
+          scrollController.offset < searchBarHeight) {
+        // we need around searchBarHieght scrolling values in 0.0 to 1.0
+        _animationController
+            .animateTo((scrollController.offset / searchBarHeight));
+      } else {
+        _animationController.animateTo(1.0);
       }
     });
     super.initState();
@@ -61,7 +59,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
 
   @override
   void dispose() {
-    animationController!.dispose();
+    animationController?.dispose();
     super.dispose();
   }
 
@@ -180,7 +178,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                               (1 / count) * index, 1.0,
                                               curve: Curves.fastOutSlowIn)));
                                   animationController!.forward();
-                                  return HotelListView(
+                                  return HotelRowOneWidget(
                                     callback: () {
                                       Navigator.push(
                                         context,
@@ -204,7 +202,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               animation: _animationController,
                               builder: (BuildContext context, Widget? child) {
                                 return Positioned(
-                                  top: -searchBarHieght *
+                                  top: -searchBarHeight *
                                       (_animationController.value),
                                   left: 0,
                                   right: 0,
@@ -349,7 +347,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               curve: Interval((1 / count) * index, 1.0,
                                   curve: Curves.fastOutSlowIn)));
                       animationController!.forward();
-                      return HotelListView(
+                      return HotelRowOneWidget(
                         callback: () {},
                         hotelData: hotelList[index],
                         animation: animation,
@@ -377,7 +375,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
         ),
       );
       hotelListViews.add(
-        HotelListView(
+        HotelRowOneWidget(
           callback: () {},
           hotelData: hotelList[i],
           animation: animation,

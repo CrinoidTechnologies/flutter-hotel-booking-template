@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/modules/_common/widget/selectable_title_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../explore/explore_page.dart';
-import '../myTrips/myTripsScreen.dart';
+import '../myTrips/my_trips_page.dart';
 import '../profile/profileScreen.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -10,7 +11,8 @@ class DashboardPage extends StatefulWidget {
   _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> with TickerProviderStateMixin {
+class _DashboardPageState extends State<DashboardPage>
+    with TickerProviderStateMixin {
   AnimationController? animationController;
   bool isFirstTime = true;
   Widget currentPage = Container();
@@ -18,7 +20,8 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
 
   @override
   void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 400), vsync: this);
+    animationController =
+        AnimationController(duration: Duration(milliseconds: 400), vsync: this);
     currentPage = Container();
     WidgetsBinding.instance!.addPostFrameCallback((_) => _startLoadScreen());
     super.initState();
@@ -46,7 +49,9 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
     return Container(
       child: Scaffold(
         backgroundColor: AppTheme.getTheme().backgroundColor,
-        bottomNavigationBar: Container(height: 58 + MediaQuery.of(context).padding.bottom, child: getBottomBarUI(bottomBarType)),
+        bottomNavigationBar: Container(
+            height: 58 + MediaQuery.of(context).padding.bottom,
+            child: getBottomBarUI(bottomBarType)),
         body: isFirstTime
             ? Center(
                 child: CircularProgressIndicator(
@@ -63,24 +68,19 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
       bottomBarType = tabType;
       animationController!.reverse().then((f) {
         if (tabType == BottomBarType.Explore) {
-          setState(() {
-            currentPage = ExplorePage(
-              animationController: animationController,
-            );
-          });
+          currentPage = ExplorePage(
+            animationController: animationController,
+          );
         } else if (tabType == BottomBarType.Trips) {
-          setState(() {
-            currentPage = MyTripsScreen(
-              animationController: animationController,
-            );
-          });
+          currentPage = MyTripsPage(
+            animationController: animationController,
+          );
         } else if (tabType == BottomBarType.Profile) {
-          setState(() {
-            currentPage = ProfileScreen(
-              animationController: animationController,
-            );
-          });
+          currentPage = ProfileScreen(
+            animationController: animationController,
+          );
         }
+        setState(() {});
       });
     }
   }
@@ -102,116 +102,38 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
           Row(
             children: <Widget>[
               Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.2),
-                    onTap: () {
-                      tabClick(BottomBarType.Explore);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 32,
-                          child: Icon(
-                            Icons.search,
-                            size: 26,
-                            color: tabType == BottomBarType.Explore ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Explore",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: tabType == BottomBarType.Explore ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                child: SelectableTitleWidget(
+                  title: 'Explore',
+                  showRoundedCornerRipple: false,
+                  drawable: Icon(FontAwesomeIcons.search),
+                  isSelected: tabType == BottomBarType.Explore,
+                  onTap: () {
+                    tabClick(BottomBarType.Explore);
+                  },
                 ),
               ),
               Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.2),
-                    onTap: () {
-                      tabClick(BottomBarType.Trips);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 32,
-                          child: Icon(
-                            FontAwesomeIcons.heart,
-                            color: tabType == BottomBarType.Trips ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor,
-                            size: 20,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Trips",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: tabType == BottomBarType.Trips ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                child: SelectableTitleWidget(
+                  title: 'Trips',
+                  showRoundedCornerRipple: false,
+                  drawable: Icon(FontAwesomeIcons.heart),
+                  isSelected: tabType == BottomBarType.Trips,
+                  onTap: () {
+                    tabClick(BottomBarType.Trips);
+                  },
                 ),
               ),
               Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.2),
-                    onTap: () {
-                      tabClick(BottomBarType.Profile);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 32,
-                          child: Icon(
-                            FontAwesomeIcons.user,
-                            color: tabType == BottomBarType.Profile ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor,
-                            size: 22,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Profile",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: tabType == BottomBarType.Profile ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().disabledColor),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                child: SelectableTitleWidget(
+                  title: 'Profile',
+                  showRoundedCornerRipple: false,
+                  drawable: Icon(FontAwesomeIcons.user),
+                  isSelected: tabType == BottomBarType.Profile,
+                  onTap: () {
+                    tabClick(BottomBarType.Profile);
+                  },
                 ),
-              )
+              ),
             ],
           ),
           SizedBox(

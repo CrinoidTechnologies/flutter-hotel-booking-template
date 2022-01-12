@@ -3,34 +3,34 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:motel/modules/_common/widget/rating_widget.dart';
+import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
-import '../hotelDetailes/hotelRoomeList.dart';
-import '../hotelDetailes/ratingView.dart';
-import '../hotelDetailes/reviewsListScreen.dart';
-import '../hotelDetailes/roomBookingScreen.dart';
+import '../hotel_details/hotelRoomeList.dart';
+import '../hotel_details/widget/rating_view_widget.dart';
+import '../hotel_details/reviewsListScreen.dart';
+import '../hotel_details/roomBookingScreen.dart';
 
-class HotelDetailes extends StatefulWidget {
+class HotelDetailsPage extends StatefulWidget {
   final HotelListData? hotelData;
 
-  const HotelDetailes({Key? key, this.hotelData}) : super(key: key);
+  const HotelDetailsPage({Key? key, this.hotelData}) : super(key: key);
 
   @override
-  _HotelDetailesState createState() => _HotelDetailesState();
+  _HotelDetailsPageState createState() => _HotelDetailsPageState();
 }
 
-class _HotelDetailesState extends State<HotelDetailes>
+class _HotelDetailsPageState extends State<HotelDetailsPage>
     with TickerProviderStateMixin {
   ScrollController scrollController = ScrollController(initialScrollOffset: 0);
-  var hoteltext1 =
+  var hotelText1 =
       "Featuring a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum...";
-  var hoteltext2 =
+  var hotelText2 =
       "Featuring a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum";
   bool isFav = false;
-  bool isReadless = false;
+  bool isReadLess = false;
   AnimationController? animationController;
-  var imageHieght = 0.0;
+  var imageHeight = 0.0;
   late AnimationController _animationController;
 
   @override
@@ -41,20 +41,18 @@ class _HotelDetailesState extends State<HotelDetailes>
         AnimationController(duration: Duration(milliseconds: 0), vsync: this);
     animationController!.forward();
     scrollController.addListener(() {
-      if (context != null) {
-        if (scrollController.offset < 0) {
-          // we static set the just below half scrolling values
-          _animationController.animateTo(0.0);
-        } else if (scrollController.offset > 0.0 &&
-            scrollController.offset < imageHieght) {
-          // we need around half scrolling values
-          if (scrollController.offset < ((imageHieght / 1.2))) {
-            _animationController
-                .animateTo((scrollController.offset / imageHieght));
-          } else {
-            // we static set the just above half scrolling values "around == 0.22"
-            _animationController.animateTo((imageHieght / 1.2) / imageHieght);
-          }
+      if (scrollController.offset < 0) {
+        // we static set the just below half scrolling values
+        _animationController.animateTo(0.0);
+      } else if (scrollController.offset > 0.0 &&
+          scrollController.offset < imageHeight) {
+        // we need around half scrolling values
+        if (scrollController.offset < ((imageHeight / 1.2))) {
+          _animationController
+              .animateTo((scrollController.offset / imageHeight));
+        } else {
+          // we static set the just above half scrolling values "around == 0.22"
+          _animationController.animateTo((imageHeight / 1.2) / imageHeight);
         }
       }
     });
@@ -69,7 +67,7 @@ class _HotelDetailesState extends State<HotelDetailes>
 
   @override
   Widget build(BuildContext context) {
-    imageHieght = MediaQuery.of(context).size.height;
+    imageHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppTheme.getTheme().backgroundColor,
       body: Stack(
@@ -78,7 +76,7 @@ class _HotelDetailesState extends State<HotelDetailes>
             color: AppTheme.getTheme().backgroundColor,
             child: ListView(
               controller: scrollController,
-              padding: EdgeInsets.only(top: 24 + imageHieght),
+              padding: EdgeInsets.only(top: 24 + imageHeight),
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(left: 24, right: 24),
@@ -115,7 +113,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: !isReadless ? hoteltext1 : hoteltext2,
+                          text: !isReadLess ? hotelText1 : hotelText2,
                           style: TextStyle(
                             fontSize: 14,
                             color: AppTheme.getTheme().disabledColor,
@@ -123,7 +121,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                           recognizer: new TapGestureRecognizer()..onTap = () {},
                         ),
                         TextSpan(
-                          text: !isReadless ? ' Read more' : " less",
+                          text: !isReadLess ? ' Read more' : " less",
                           style: TextStyle(
                             fontSize: 14,
                             color: AppTheme.getTheme().primaryColor,
@@ -131,7 +129,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                           recognizer: new TapGestureRecognizer()
                             ..onTap = () {
                               setState(() {
-                                isReadless = !isReadless;
+                                isReadLess = !isReadLess;
                               });
                             },
                         ),
@@ -146,7 +144,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                     top: 8,
                     bottom: 16,
                   ),
-                  child: RatingView(hotelData: widget.hotelData),
+                  child: RatingViewWidget(hotelData: widget.hotelData),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 24, right: 24),
@@ -446,11 +444,11 @@ class _HotelDetailesState extends State<HotelDetailes>
         animation: _animationController,
         builder: (BuildContext context, Widget? child) {
           var opecity = 1.0 -
-              (_animationController.value >= ((imageHieght / 1.2) / imageHieght)
+              (_animationController.value >= ((imageHeight / 1.2) / imageHeight)
                   ? 1.0
                   : _animationController.value);
           return SizedBox(
-            height: imageHieght * (1.0 - _animationController.value),
+            height: imageHeight * (1.0 - _animationController.value),
             child: Stack(
               children: <Widget>[
                 IgnorePointer(
