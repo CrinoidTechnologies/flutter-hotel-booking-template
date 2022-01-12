@@ -1,13 +1,10 @@
 package com.example.motel
 
-import android.os.Bundle
+import io.flutter.embedding.android.FlutterActivity;
 
-import io.flutter.app.FlutterActivity
-import io.flutter.plugins.GeneratedPluginRegistrant
+class MainActivity : FlutterActivity() {
+    // You do not need to override onCreate() in order to invoke
+    // GeneratedPluginRegistrant. Flutter now does that on your behalf.
 
-class MainActivity: FlutterActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    GeneratedPluginRegistrant.registerWith(this)
-  }
+    // ...retain whatever custom code you had from before (if any).
 }
