@@ -11,9 +11,9 @@ import '../hotelDetailes/searchScreen.dart';
 import '../myTrips/favoritesListView.dart';
 
 class ExplorePage extends StatefulWidget {
-  final AnimationController animationController;
+  final AnimationController? animationController;
 
-  const ExplorePage({Key key, this.animationController}) : super(key: key);
+  const ExplorePage({Key? key, this.animationController}) : super(key: key);
 
   @override
   _ExplorePageState createState() => _ExplorePageState();
@@ -22,28 +22,28 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage>
     with TickerProviderStateMixin {
   var hotelList = HotelListData.hotelList;
-  ScrollController controller;
-  AnimationController _animationController;
+  ScrollController? controller;
+  late AnimationController _animationController;
   var sliderImageHeight = 0.0;
 
   @override
   void initState() {
     _animationController =
         AnimationController(duration: Duration(milliseconds: 0), vsync: this);
-    widget.animationController.forward();
+    widget.animationController!.forward();
     controller = ScrollController(initialScrollOffset: 0.0);
 
-    controller.addListener(() {
+    controller!.addListener(() {
       if (context != null) {
-        if (controller.offset < 0) {
+        if (controller!.offset < 0) {
           // we static set the just below half scrolling values
           _animationController.animateTo(0.0);
-        } else if (controller.offset > 0.0 &&
-            controller.offset < sliderImageHeight) {
+        } else if (controller!.offset > 0.0 &&
+            controller!.offset < sliderImageHeight) {
           // we need around half scrolling values
-          if (controller.offset < ((sliderImageHeight / 1.5))) {
+          if (controller!.offset < ((sliderImageHeight / 1.5))) {
             _animationController
-                .animateTo((controller.offset / sliderImageHeight));
+                .animateTo((controller!.offset / sliderImageHeight));
           } else {
             // we static set the just above half scrolling values "around == 0.64"
             _animationController
@@ -59,14 +59,14 @@ class _ExplorePageState extends State<ExplorePage>
   Widget build(BuildContext context) {
     sliderImageHeight = MediaQuery.of(context).size.width * 1.3;
     return AnimatedBuilder(
-      animation: widget.animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: widget.animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: widget.animationController,
+          opacity: widget.animationController!,
           // FadeTransition and Transform : just for screen loading animation on fistTime
           child: new Transform(
             transform: new Matrix4.translationValues(
-                0.0, 40 * (1.0 - widget.animationController.value), 0.0),
+                0.0, 40 * (1.0 - widget.animationController!.value), 0.0),
             child: Scaffold(
               backgroundColor: AppTheme.getTheme().backgroundColor,
               body: Stack(
@@ -85,7 +85,7 @@ class _ExplorePageState extends State<ExplorePage>
                         var count = 4;
                         var animation = Tween(begin: 0.0, end: 1.0).animate(
                           CurvedAnimation(
-                            parent: widget.animationController,
+                            parent: widget.animationController!,
                             curve: Interval((1 / count) * index, 1.0,
                                 curve: Curves.fastOutSlowIn),
                           ),
@@ -162,7 +162,7 @@ class _ExplorePageState extends State<ExplorePage>
   Widget _viewHotelsButton(AnimationController _animationController) {
     return AnimatedBuilder(
       animation: _animationController,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         var opecity = 1.0 -
             (_animationController.value > 0.64
                 ? 1.0
@@ -238,7 +238,7 @@ class _ExplorePageState extends State<ExplorePage>
       right: 0,
       child: AnimatedBuilder(
         animation: _animationController,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           // we calculate the opecity between 0.64 to 1.0
           var opecity = 1.0 -
               (_animationController.value > 0.64
@@ -262,7 +262,7 @@ class _ExplorePageState extends State<ExplorePage>
     hotelList.forEach((f) {
       var animation = Tween(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
-          parent: widget.animationController,
+          parent: widget.animationController!,
           curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn),
         ),
       );

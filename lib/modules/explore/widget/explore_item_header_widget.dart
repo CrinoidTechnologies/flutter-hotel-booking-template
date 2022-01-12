@@ -4,13 +4,13 @@ import '../../../app/ui/appTheme.dart';
 class ExploreItemHeaderWidget extends StatelessWidget {
   final String titleTxt;
   final String subTxt;
-  final AnimationController animationController;
-  final Animation animation;
-  final VoidCallback click;
+  final AnimationController? animationController;
+  final Animation? animation;
+  final VoidCallback? click;
   final bool isLeftButton;
 
   const ExploreItemHeaderWidget(
-      {Key key,
+      {Key? key,
       this.titleTxt: "",
       this.subTxt: "",
       this.animationController,
@@ -22,13 +22,13 @@ class ExploreItemHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation,
+          opacity: animation as Animation<double>,
           child: new Transform(
             transform: new Matrix4.translationValues(
-                0.0, 30 * (1.0 - animation.value), 0.0),
+                0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: Row(
@@ -51,7 +51,7 @@ class ExploreItemHeaderWidget extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(4.0)),
                             onTap: () {
-                              click();
+                              click!();
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8),

@@ -61,7 +61,7 @@ class _HeplCenterScreenState extends State<HeplCenterScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
-                                    helpSearchList[index].titleTxt != "" ? helpSearchList[index].titleTxt : helpSearchList[index].subTxt,
+                                    helpSearchList[index].titleTxt != "" ? helpSearchList[index].titleTxt! : helpSearchList[index].subTxt!,
                                     style: TextStyle(
                                         fontWeight: helpSearchList[index].titleTxt != "" ? FontWeight.bold : FontWeight.normal,
                                         fontSize: helpSearchList[index].titleTxt != "" ? 18 : 14),

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_page_indicator/flutter_page_indicator.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../app/ui/appTheme.dart';
 import '../authentication/login_screen.dart';
 import '../authentication/signup_screen.dart';
@@ -13,9 +13,9 @@ class IntroductionScreen extends StatefulWidget {
 
 class _IntroductionScreenState extends State<IntroductionScreen> {
   var pageController = PageController(initialPage: 0);
-  var pageViewModelData =[];
+  var pageViewModelData = [];
 
-  Timer sliderTimer;
+  Timer? sliderTimer;
   var currentShowIndex = 0;
 
   @override
@@ -28,23 +28,28 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 
     pageViewModelData.add(PageViewData(
       titleText: 'Find best deals',
-      subText: 'Find deals for any season from cosy\ncountry homes to city flats',
+      subText:
+          'Find deals for any season from cosy\ncountry homes to city flats',
       assetsImage: 'assets/images/introduction2.png',
     ));
 
     pageViewModelData.add(PageViewData(
       titleText: 'Best travelling all time',
-      subText: 'Find deals for any season from cosy\ncountry homes to city flats',
+      subText:
+          'Find deals for any season from cosy\ncountry homes to city flats',
       assetsImage: 'assets/images/introduction3.png',
     ));
 
     sliderTimer = Timer.periodic(Duration(seconds: 4), (timer) {
       if (currentShowIndex == 0) {
-        pageController.animateTo(MediaQuery.of(context).size.width, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(MediaQuery.of(context).size.width,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       } else if (currentShowIndex == 1) {
-        pageController.animateTo(MediaQuery.of(context).size.width * 2, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(MediaQuery.of(context).size.width * 2,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       } else if (currentShowIndex == 2) {
-        pageController.animateTo(0, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(0,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       }
     });
     super.initState();
@@ -81,17 +86,18 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 ],
               ),
             ),
-            PageIndicator(
-              layout: PageIndicatorLayout.WARM,
-              size: 10.0,
-              controller: pageController,
-              space: 5.0,
+            SmoothPageIndicator(
               count: 3,
-              color: AppTheme.getTheme().dividerColor,
-              activeColor: AppTheme.getTheme().primaryColor,
+              effect: WormEffect(
+                  radius: 10.0,
+                  spacing: 5.0,
+                  dotColor: AppTheme.getTheme().dividerColor,
+                  activeDotColor: AppTheme.getTheme().primaryColor),
+              controller: pageController,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 48, right: 48, bottom: 8, top: 32),
+              padding: const EdgeInsets.only(
+                  left: 48, right: 48, bottom: 8, top: 32),
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
@@ -119,7 +125,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     child: Center(
                       child: Text(
                         "Login",
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white),
                       ),
                     ),
                   ),
@@ -127,7 +136,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 48, right: 48, bottom: 32, top: 8),
+              padding: const EdgeInsets.only(
+                  left: 48, right: 48, bottom: 32, top: 8),
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
@@ -155,7 +165,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     child: Center(
                       child: Text(
                         "create account",
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 16),
                       ),
                     ),
                   ),
@@ -173,9 +184,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 }
 
 class PagePopup extends StatelessWidget {
-  final PageViewData imageData;
+  final PageViewData? imageData;
 
-  const PagePopup({Key key, this.imageData}) : super(key: key);
+  const PagePopup({Key? key, this.imageData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +200,7 @@ class PagePopup extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Image.asset(
-                  imageData.assetsImage,
+                  imageData!.assetsImage!,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -200,7 +211,7 @@ class PagePopup extends StatelessWidget {
           flex: 1,
           child: Container(
             child: Text(
-              imageData.titleText,
+              imageData!.titleText!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24,
@@ -213,7 +224,7 @@ class PagePopup extends StatelessWidget {
           flex: 1,
           child: Container(
             child: Text(
-              imageData.subText,
+              imageData!.subText!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -233,9 +244,9 @@ class PagePopup extends StatelessWidget {
 }
 
 class PageViewData {
-  final String titleText;
-  final String subText;
-  final String assetsImage;
+  final String? titleText;
+  final String? subText;
+  final String? assetsImage;
 
   PageViewData({this.titleText, this.subText, this.assetsImage});
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:motel/modules/_common/widget/rating_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class ReviewsListScreen extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class ReviewsListScreen extends StatefulWidget {
 
 class _ReviewsListScreenState extends State<ReviewsListScreen> with TickerProviderStateMixin {
   List<HotelListData> reviewsList = HotelListData.reviewsList;
-  AnimationController animationController;
+  AnimationController? animationController;
   @override
   void initState() {
     animationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
@@ -19,7 +19,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> with TickerProvid
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -43,8 +43,8 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> with TickerProvid
               itemBuilder: (context, index) {
                 var count = reviewsList.length > 10 ? 10 : reviewsList.length;
                 var animation = Tween(begin: 0.0, end: 1.0)
-                    .animate(CurvedAnimation(parent: animationController, curve: Interval((1 / count) * index, 1.0, curve: Curves.fastOutSlowIn)));
-                animationController.forward();
+                    .animate(CurvedAnimation(parent: animationController!, curve: Interval((1 / count) * index, 1.0, curve: Curves.fastOutSlowIn)));
+                animationController!.forward();
                 return ReviewsView(
                   callback: () {},
                   reviewsList: reviewsList[index],
@@ -105,13 +105,13 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> with TickerProvid
 }
 
 class ReviewsView extends StatelessWidget {
-  final VoidCallback callback;
-  final HotelListData reviewsList;
-  final AnimationController animationController;
-  final Animation animation;
+  final VoidCallback? callback;
+  final HotelListData? reviewsList;
+  final AnimationController? animationController;
+  final Animation? animation;
 
   const ReviewsView({
-    Key key,
+    Key? key,
     this.reviewsList,
     this.animationController,
     this.animation,
@@ -121,12 +121,12 @@ class ReviewsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation,
+          opacity: animation as Animation<double>,
           child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - animation.value), 0.0),
+            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - animation!.value), 0.0),
             child: Padding(
               padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
               child: Column(
@@ -153,7 +153,7 @@ class ReviewsView extends StatelessWidget {
                             child: AspectRatio(
                               aspectRatio: 1,
                               child: Image.asset(
-                                reviewsList.imagePath,
+                                reviewsList!.imagePath,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -165,11 +165,11 @@ class ReviewsView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            reviewsList.titleTxt,
+                            reviewsList!.titleTxt,
                             style: new TextStyle(fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            reviewsList.dateTxt,
+                            reviewsList!.dateTxt,
                             style: new TextStyle(
                               fontWeight: FontWeight.w100,
                               color: AppTheme.getTheme().disabledColor,
@@ -178,18 +178,15 @@ class ReviewsView extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Text(
-                                "(${reviewsList.rating})",
+                                "(${reviewsList!.rating})",
                                 style: new TextStyle(
                                   fontWeight: FontWeight.w100,
                                 ),
                               ),
-                              SmoothStarRating(
-                                allowHalfRating: true,
-                                starCount: 5,
-                                rating: reviewsList.rating / 2,
+                              RatingBarWidget(
+                                rating: reviewsList!.rating / 2,
                                 size: 16,
-                                color: AppTheme.getTheme().primaryColor,
-                                borderColor: AppTheme.getTheme().primaryColor,
+                                activeColor: AppTheme.getTheme().primaryColor,
                               ),
                             ],
                           ),
@@ -200,7 +197,7 @@ class ReviewsView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      reviewsList.subTxt,
+                      reviewsList!.subTxt,
                       style: new TextStyle(
                         fontWeight: FontWeight.w100,
                         color: AppTheme.getTheme().disabledColor,

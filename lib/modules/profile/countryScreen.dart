@@ -10,7 +10,7 @@ class CountryScreen extends StatefulWidget {
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-  List<SettingsListData> countryList = List<SettingsListData>();
+  List<SettingsListData> countryList = [];
 
   @override
   void initState() {
@@ -74,7 +74,7 @@ class _CountryScreenState extends State<CountryScreen> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(16.0),
                                           child: Text(
-                                            countryList[index].titleTxt,
+                                            countryList[index].titleTxt!,
                                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                                           ),
                                         ),
@@ -83,7 +83,7 @@ class _CountryScreenState extends State<CountryScreen> {
                                         padding: const EdgeInsets.all(16),
                                         child: Container(
                                           child: Text(
-                                            countryList[index].subTxt,
+                                            countryList[index].subTxt!,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16,

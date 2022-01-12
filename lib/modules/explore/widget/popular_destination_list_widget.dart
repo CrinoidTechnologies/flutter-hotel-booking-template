@@ -4,11 +4,11 @@ import '../../../app/ui/appTheme.dart';
 import '../../../models/hotelListData.dart';
 
 class PopularDestinationListWidget extends StatefulWidget {
-  final Function(int) callBack;
-  final AnimationController animationController;
+  final Function(int)? callBack;
+  final AnimationController? animationController;
 
   const PopularDestinationListWidget(
-      {Key key, this.callBack, this.animationController})
+      {Key? key, this.callBack, this.animationController})
       : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class PopularDestinationListWidget extends StatefulWidget {
 class _PopularDestinationListWidgetState
     extends State<PopularDestinationListWidget> with TickerProviderStateMixin {
   var popularList = HotelListData.popularList;
-  AnimationController animationController;
+  AnimationController? animationController;
 
   @override
   void initState() {
@@ -36,13 +36,13 @@ class _PopularDestinationListWidgetState
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: widget.animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: widget.animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: widget.animationController,
+          opacity: widget.animationController!,
           child: new Transform(
             transform: new Matrix4.translationValues(
-                0.0, 40 * (1.0 - widget.animationController.value), 0.0),
+                0.0, 40 * (1.0 - widget.animationController!.value), 0.0),
             child: Container(
               height: 180,
               width: double.infinity,
@@ -62,16 +62,16 @@ class _PopularDestinationListWidgetState
                             popularList.length > 10 ? 10 : popularList.length;
                         var animation = Tween(begin: 0.0, end: 1.0).animate(
                             CurvedAnimation(
-                                parent: animationController,
+                                parent: animationController!,
                                 curve: Interval((1 / count) * index, 1.0,
                                     curve: Curves.fastOutSlowIn)));
-                        animationController.forward();
+                        animationController!.forward();
                         return PopularDestinationRowWidget(
                           popularList: popularList[index],
                           animation: animation,
                           animationController: animationController,
                           callback: () {
-                            widget.callBack(index);
+                            widget.callBack!(index);
                           },
                         );
                       },

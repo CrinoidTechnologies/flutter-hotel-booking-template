@@ -49,7 +49,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
                                     child: Text(
-                                      currencyList[index].titleTxt,
+                                      currencyList[index].titleTxt!,
                                       style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                                     ),
                                   ),
@@ -58,7 +58,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                                   padding: const EdgeInsets.all(16),
                                   child: Container(
                                     child: Text(
-                                      currencyList[index].subTxt,
+                                      currencyList[index].subTxt!,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,

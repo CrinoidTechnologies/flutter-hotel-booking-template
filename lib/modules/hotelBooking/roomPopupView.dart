@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import '../../app/ui/appTheme.dart';
 
 class RoomPopupView extends StatefulWidget {
-  final Function(int, int, int) onChnage;
-  final bool barrierDismissible;
-  final int room;
-  final int ad;
-  final int ch;
+  final Function(int, int, int)? onChnage;
+  final bool? barrierDismissible;
+  final int? room;
+  final int? ad;
+  final int? ch;
 
-  const RoomPopupView({Key key, this.barrierDismissible, this.room, this.ad, this.ch, this.onChnage}) : super(key: key);
+  const RoomPopupView({Key? key, this.barrierDismissible, this.room, this.ad, this.ch, this.onChnage}) : super(key: key);
   @override
   _RoomPopupViewState createState() => _RoomPopupViewState();
 }
 
 class _RoomPopupViewState extends State<RoomPopupView> with TickerProviderStateMixin {
   PopupTextType popupTextType = PopupTextType.no;
-  AnimationController animationController;
+  late AnimationController animationController;
   int room = 1;
   int ad = 2;
   int ch = 0;
-  DateTime startDate;
-  DateTime endDate;
+  DateTime? startDate;
+  DateTime? endDate;
 
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _RoomPopupViewState extends State<RoomPopupView> with TickerProviderStateM
         backgroundColor: Colors.transparent,
         body: AnimatedBuilder(
           animation: animationController,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return AnimatedOpacity(
               duration: Duration(milliseconds: 100),
               opacity: animationController.value,
@@ -55,7 +55,7 @@ class _RoomPopupViewState extends State<RoomPopupView> with TickerProviderStateM
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
-                  if (widget.barrierDismissible) {
+                  if (widget.barrierDismissible!) {
                     Navigator.pop(context);
                   }
                 },
@@ -103,7 +103,7 @@ class _RoomPopupViewState extends State<RoomPopupView> with TickerProviderStateM
                                     highlightColor: Colors.transparent,
                                     onTap: () {
                                       try {
-                                        widget.onChnage(room, ad, ch);
+                                        widget.onChnage!(room, ad, ch);
                                         Navigator.pop(context);
                                       } catch (e) {}
                                     },

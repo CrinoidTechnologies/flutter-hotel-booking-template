@@ -11,7 +11,7 @@ class SearchTypeListView extends StatefulWidget {
 class _SearchTypeListViewState extends State<SearchTypeListView> with TickerProviderStateMixin {
   List<HotelListData> hotelTypeList = HotelListData.hotelTypeList;
 
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _SearchTypeListViewState extends State<SearchTypeListView> with TickerProv
           animationController.forward();
           return AnimatedBuilder(
             animation: animationController,
-            builder: (BuildContext context, Widget child) {
+            builder: (BuildContext context, Widget? child) {
               return FadeTransition(
                 opacity: animation,
                 child: new Transform(

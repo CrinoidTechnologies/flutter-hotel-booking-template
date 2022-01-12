@@ -3,18 +3,18 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/modules/_common/widget/rating_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
 import '../hotelDetailes/hotelRoomeList.dart';
 import '../hotelDetailes/ratingView.dart';
 import '../hotelDetailes/reviewsListScreen.dart';
 import '../hotelDetailes/roomBookingScreen.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class HotelDetailes extends StatefulWidget {
-  final HotelListData hotelData;
+  final HotelListData? hotelData;
 
-  const HotelDetailes({Key key, this.hotelData}) : super(key: key);
+  const HotelDetailes({Key? key, this.hotelData}) : super(key: key);
 
   @override
   _HotelDetailesState createState() => _HotelDetailesState();
@@ -29,9 +29,9 @@ class _HotelDetailesState extends State<HotelDetailes>
       "Featuring a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum a fitness center, Grand Royale Park Hote is located in Sweden, 4.7 km frome National Museum";
   bool isFav = false;
   bool isReadless = false;
-  AnimationController animationController;
+  AnimationController? animationController;
   var imageHieght = 0.0;
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _HotelDetailesState extends State<HotelDetailes>
         duration: Duration(milliseconds: 2000), vsync: this);
     _animationController =
         AnimationController(duration: Duration(milliseconds: 0), vsync: this);
-    animationController.forward();
+    animationController!.forward();
     scrollController.addListener(() {
       if (context != null) {
         if (scrollController.offset < 0) {
@@ -63,7 +63,7 @@ class _HotelDetailesState extends State<HotelDetailes>
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -322,7 +322,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                             context,
                             MaterialPageRoute(
                               builder: (context) => RoomBookingScreen(
-                                hotelName: widget.hotelData.titleTxt,
+                                hotelName: widget.hotelData!.titleTxt,
                               ),
                               fullscreenDialog: true,
                             ),
@@ -437,14 +437,14 @@ class _HotelDetailesState extends State<HotelDetailes>
     );
   }
 
-  Widget _backgraoundImageUI(HotelListData hotelData) {
+  Widget _backgraoundImageUI(HotelListData? hotelData) {
     return Positioned(
       top: 0,
       left: 0,
       right: 0,
       child: AnimatedBuilder(
         animation: _animationController,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           var opecity = 1.0 -
               (_animationController.value >= ((imageHieght / 1.2) / imageHieght)
                   ? 1.0
@@ -476,7 +476,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
-                              hotelData.imagePath,
+                              hotelData!.imagePath,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -667,13 +667,13 @@ class _HotelDetailesState extends State<HotelDetailes>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                widget.hotelData.titleTxt,
+                widget.hotelData!.titleTxt,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 22,
                   color: isInList
-                      ? AppTheme.getTheme().textTheme.bodyText1.color
+                      ? AppTheme.getTheme().textTheme.bodyText1!.color
                       : Colors.white,
                 ),
               ),
@@ -682,7 +682,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    widget.hotelData.subTxt,
+                    widget.hotelData!.subTxt,
                     style: TextStyle(
                       fontSize: 14,
                       color: isInList
@@ -700,7 +700,7 @@ class _HotelDetailesState extends State<HotelDetailes>
                   ),
                   Expanded(
                     child: Text(
-                      "${widget.hotelData.dist.toStringAsFixed(1)} km to city",
+                      "${widget.hotelData!.dist.toStringAsFixed(1)} km to city",
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 14,
@@ -718,16 +718,13 @@ class _HotelDetailesState extends State<HotelDetailes>
                       padding: const EdgeInsets.only(top: 4),
                       child: Row(
                         children: <Widget>[
-                          SmoothStarRating(
-                            allowHalfRating: true,
-                            starCount: 5,
-                            rating: widget.hotelData.rating,
+                          RatingBarWidget(
+                            rating: widget.hotelData!.rating,
                             size: 20,
-                            color: AppTheme.getTheme().primaryColor,
-                            borderColor: AppTheme.getTheme().primaryColor,
+                            activeColor: AppTheme.getTheme().primaryColor,
                           ),
                           Text(
-                            " ${widget.hotelData.reviews} Reviews",
+                            " ${widget.hotelData!.reviews} Reviews",
                             style: TextStyle(
                               fontSize: 14,
                               color: isInList
@@ -746,13 +743,13 @@ class _HotelDetailesState extends State<HotelDetailes>
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Text(
-              "\$${widget.hotelData.perNight}",
+              "\$${widget.hotelData!.perNight}",
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 22,
                 color: isInList
-                    ? AppTheme.getTheme().textTheme.bodyText1.color
+                    ? AppTheme.getTheme().textTheme.bodyText1!.color
                     : Colors.white,
               ),
             ),

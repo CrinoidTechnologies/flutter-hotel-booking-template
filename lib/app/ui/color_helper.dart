@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 import 'appTheme.dart';
 
 class ColorHelper {
@@ -8,4 +10,6 @@ class ColorHelper {
   static Color get twitterColor => Color(0xFF05A9F0);
 
   static Color get primaryColor => AppTheme.getTheme().primaryColor;
+
+  static Color get lightColor => Colors.white;
 }

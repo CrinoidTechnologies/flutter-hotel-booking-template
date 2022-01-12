@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../../app/ui/appTheme.dart';
 
 class SliderView extends StatefulWidget {
-  final Function(double) onChnagedistValue;
-  final double distValue;
+  final Function(double?)? onChnagedistValue;
+  final double? distValue;
 
-  const SliderView({Key key, this.onChnagedistValue, this.distValue})
+  const SliderView({Key? key, this.onChnagedistValue, this.distValue})
       : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class SliderView extends StatefulWidget {
 }
 
 class _SliderViewState extends State<SliderView> {
-  double distValue = 50.0;
+  double? distValue = 50.0;
 
   @override
   void initState() {
@@ -29,18 +29,18 @@ class _SliderViewState extends State<SliderView> {
           Row(
             children: <Widget>[
               Expanded(
-                flex: distValue.round(),
+                flex: distValue!.round(),
                 child: SizedBox(),
               ),
               Container(
                 width: 170,
                 child: Text(
-                  "Less than ${(distValue / 10).toStringAsFixed(1)} Km",
+                  "Less than ${(distValue! / 10).toStringAsFixed(1)} Km",
                   textAlign: TextAlign.center,
                 ),
               ),
               Expanded(
-                flex: 100 - distValue.round(),
+                flex: 100 - distValue!.round(),
                 child: SizedBox(),
               ),
             ],
@@ -55,7 +55,7 @@ class _SliderViewState extends State<SliderView> {
                   distValue = value;
                 });
                 try {
-                  widget.onChnagedistValue(distValue);
+                  widget.onChnagedistValue!(distValue);
                 } catch (e) {}
               },
               min: 0,
@@ -63,7 +63,7 @@ class _SliderViewState extends State<SliderView> {
               activeColor: AppTheme.getTheme().primaryColor,
               inactiveColor: Colors.grey.withOpacity(0.4),
               divisions: 100,
-              value: distValue,
+              value: distValue!,
             ),
           ),
         ],
@@ -92,16 +92,16 @@ class CustomThumbShape extends SliderComponentShape {
   void paint(
     PaintingContext context,
     Offset thumbCenter, {
-    Animation<double> activationAnimation,
-    Animation<double> enableAnimation,
-    bool isDiscrete,
-    TextPainter labelPainter,
-    RenderBox parentBox,
-    SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    double value,
-    @required double textScaleFactor,
-    @required Size sizeWithOverflow,
+    Animation<double>? activationAnimation,
+    required Animation<double> enableAnimation,
+    bool? isDiscrete,
+    TextPainter? labelPainter,
+    RenderBox? parentBox,
+    required SliderThemeData sliderTheme,
+    TextDirection? textDirection,
+    double? value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
   }) {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
@@ -123,7 +123,7 @@ class CustomThumbShape extends SliderComponentShape {
     cPaint..color = Colors.white;
     cPaint..strokeWidth = 14 / 2;
     canvas.drawCircle(Offset(thumbCenter.dx, thumbCenter.dy), 12, cPaint);
-    cPaint..color = colorTween.evaluate(enableAnimation);
+    cPaint..color = colorTween.evaluate(enableAnimation)!;
     canvas.drawCircle(Offset(thumbCenter.dx, thumbCenter.dy), 10, cPaint);
   }
 

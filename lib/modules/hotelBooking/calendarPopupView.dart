@@ -5,16 +5,16 @@ import '../../app/ui/appTheme.dart';
 import 'customCalendar.dart';
 
 class CalendarPopupView extends StatefulWidget {
-  final DateTime minimumDate;
-  final DateTime maximumDate;
+  final DateTime? minimumDate;
+  final DateTime? maximumDate;
   final bool barrierDismissible;
-  final DateTime initialStartDate;
-  final DateTime initialEndDate;
-  final Function(DateTime, DateTime) onApplyClick;
-  final Function onCancelClick;
+  final DateTime? initialStartDate;
+  final DateTime? initialEndDate;
+  final Function(DateTime?, DateTime?)? onApplyClick;
+  final Function? onCancelClick;
 
   const CalendarPopupView(
-      {Key key,
+      {Key? key,
       this.initialStartDate,
       this.initialEndDate,
       this.onApplyClick,
@@ -28,9 +28,9 @@ class CalendarPopupView extends StatefulWidget {
 }
 
 class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProviderStateMixin {
-  AnimationController animationController;
-  DateTime startDate;
-  DateTime endDate;
+  late AnimationController animationController;
+  DateTime? startDate;
+  DateTime? endDate;
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProvid
         backgroundColor: AppTheme.isDark ? Colors.transparent : AppTheme.getTheme().backgroundColor.withOpacity(0.6),
         body: AnimatedBuilder(
           animation: animationController,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return AnimatedOpacity(
               duration: Duration(milliseconds: 100),
               opacity: animationController.value,
@@ -105,7 +105,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProvid
                                         height: 4,
                                       ),
                                       Text(
-                                        startDate != null ? DateFormat("EEE, dd MMM").format(startDate) : "--/-- ",
+                                        startDate != null ? DateFormat("EEE, dd MMM").format(startDate!) : "--/-- ",
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
@@ -132,7 +132,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProvid
                                         height: 4,
                                       ),
                                       Text(
-                                        endDate != null ? DateFormat("EEE, dd MMM").format(endDate) : "--/-- ",
+                                        endDate != null ? DateFormat("EEE, dd MMM").format(endDate!) : "--/-- ",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                       ),
                                     ],
@@ -148,7 +148,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProvid
                               maximumDate: widget.maximumDate,
                               initialEndDate: widget.initialEndDate,
                               initialStartDate: widget.initialStartDate,
-                              startEndDateChange: (DateTime startDateData, DateTime endDateData) {
+                              startEndDateChange: (DateTime? startDateData, DateTime? endDateData) {
                                 setState(() {
                                   startDate = startDateData;
                                   endDate = endDateData;
@@ -180,7 +180,7 @@ class _CalendarPopupViewState extends State<CalendarPopupView> with TickerProvid
                                         // animationController.reverse().then((f) {
 
                                         // });
-                                        widget.onApplyClick(startDate, endDate);
+                                        widget.onApplyClick!(startDate, endDate);
                                         Navigator.pop(context);
                                       } catch (e) {}
                                     },

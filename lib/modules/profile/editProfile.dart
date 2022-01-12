@@ -49,7 +49,7 @@ class _EditProfileState extends State<EditProfile> {
                                         child: Padding(
                                           padding: const EdgeInsets.only(left: 16.0, bottom: 16, top: 16),
                                           child: Text(
-                                            userInfoList[index].titleTxt,
+                                            userInfoList[index].titleTxt!,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16,
@@ -62,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
                                         padding: const EdgeInsets.only(right: 16.0, bottom: 16, top: 16),
                                         child: Container(
                                           child: Text(
-                                            userInfoList[index].subTxt,
+                                            userInfoList[index].subTxt!,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16,

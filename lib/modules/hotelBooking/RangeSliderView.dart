@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../../app/ui/appTheme.dart';
 
 class RangeSliderView extends StatefulWidget {
-  final Function(RangeValues) onChnageRangeValues;
-  final RangeValues values;
+  final Function(RangeValues?)? onChnageRangeValues;
+  final RangeValues? values;
 
-  const RangeSliderView({Key key, this.values, this.onChnageRangeValues})
+  const RangeSliderView({Key? key, this.values, this.onChnageRangeValues})
       : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class RangeSliderView extends StatefulWidget {
 }
 
 class _RangeSliderViewState extends State<RangeSliderView> {
-  RangeValues _values;
+  RangeValues? _values;
 
   @override
   void initState() {
@@ -31,18 +31,18 @@ class _RangeSliderViewState extends State<RangeSliderView> {
               Row(
                 children: <Widget>[
                   Expanded(
-                    flex: _values.start.round(),
+                    flex: _values!.start.round(),
                     child: SizedBox(),
                   ),
                   Container(
                     width: 54,
                     child: Text(
-                      "\$${_values.start.round()}",
+                      "\$${_values!.start.round()}",
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
-                    flex: 1000 - _values.start.round(),
+                    flex: 1000 - _values!.start.round(),
                     child: SizedBox(),
                   ),
                 ],
@@ -50,18 +50,18 @@ class _RangeSliderViewState extends State<RangeSliderView> {
               Row(
                 children: <Widget>[
                   Expanded(
-                    flex: _values.end.round(),
+                    flex: _values!.end.round(),
                     child: SizedBox(),
                   ),
                   Container(
                     width: 54,
                     child: Text(
-                      "\$${_values.end.round()}",
+                      "\$${_values!.end.round()}",
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
-                    flex: 1000 - _values.end.round(),
+                    flex: 1000 - _values!.end.round(),
                     child: SizedBox(),
                   ),
                 ],
@@ -73,7 +73,7 @@ class _RangeSliderViewState extends State<RangeSliderView> {
               rangeThumbShape: CustomRangeThumbShape(),
             ),
             child: RangeSlider(
-              values: _values,
+              values: _values!,
               min: 0.0,
               max: 1000.0,
               activeColor: AppTheme.getTheme().primaryColor,
@@ -84,7 +84,7 @@ class _RangeSliderViewState extends State<RangeSliderView> {
                   setState(() {
                     _values = values;
                   });
-                  widget.onChnageRangeValues(_values);
+                  widget.onChnageRangeValues!(_values);
                 } catch (e) {}
               },
             ),
@@ -115,15 +115,15 @@ class CustomRangeThumbShape extends RangeSliderThumbShape {
   void paint(
     PaintingContext context,
     Offset center, {
-    @required Animation<double> activationAnimation,
-    @required Animation<double> enableAnimation,
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
     bool isDiscrete = false,
     bool isEnabled = false,
-    bool isOnTop,
-    @required SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    Thumb thumb,
-    bool isPressed,
+    bool? isOnTop,
+    required SliderThemeData sliderTheme,
+    TextDirection? textDirection,
+    Thumb? thumb,
+    bool? isPressed,
   }) {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
@@ -132,7 +132,7 @@ class CustomRangeThumbShape extends RangeSliderThumbShape {
     );
 
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
-    Path thumbPath;
+    late Path thumbPath;
     switch (textDirection) {
       case TextDirection.rtl:
         switch (thumb) {
@@ -170,7 +170,7 @@ class CustomRangeThumbShape extends RangeSliderThumbShape {
     cPaint..color = Colors.white;
     cPaint..strokeWidth = 14 / 2;
     canvas.drawCircle(Offset(center.dx, center.dy), 12, cPaint);
-    cPaint..color = colorTween.evaluate(enableAnimation);
+    cPaint..color = colorTween.evaluate(enableAnimation)!;
     canvas.drawCircle(Offset(center.dx, center.dy), 10, cPaint);
     canvas.drawPath(thumbPath, Paint()..color = Colors.white);
   }

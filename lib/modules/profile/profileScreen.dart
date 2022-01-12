@@ -8,9 +8,9 @@ import '../../modules/profile/inviteScreen.dart';
 import '../../modules/profile/settingsScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final AnimationController animationController;
+  final AnimationController? animationController;
 
-  const ProfileScreen({Key key, this.animationController}) : super(key: key);
+  const ProfileScreen({Key? key, this.animationController}) : super(key: key);
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -20,19 +20,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    widget.animationController.forward();
+    widget.animationController!.forward();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: widget.animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: widget.animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: widget.animationController,
+          opacity: widget.animationController!,
           child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - widget.animationController.value), 0.0),
+            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - widget.animationController!.value), 0.0),
             child: Scaffold(
               backgroundColor: AppTheme.getTheme().backgroundColor,
               body: Column(
@@ -97,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: Text(
-                                          userSettingsList[index].titleTxt,
+                                          userSettingsList[index].titleTxt!,
                                           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                                         ),
                                       ),

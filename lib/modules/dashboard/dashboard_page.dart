@@ -11,7 +11,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> with TickerProviderStateMixin {
-  AnimationController animationController;
+  AnimationController? animationController;
   bool isFirstTime = true;
   Widget currentPage = Container();
   BottomBarType bottomBarType = BottomBarType.Explore;
@@ -20,7 +20,7 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
   void initState() {
     animationController = AnimationController(duration: Duration(milliseconds: 400), vsync: this);
     currentPage = Container();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _startLoadScreen());
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _startLoadScreen());
     super.initState();
   }
 
@@ -32,12 +32,12 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
         animationController: animationController,
       );
     });
-    animationController..forward();
+    animationController?..forward();
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -61,7 +61,7 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
   void tabClick(BottomBarType tabType) {
     if (tabType != bottomBarType) {
       bottomBarType = tabType;
-      animationController.reverse().then((f) {
+      animationController!.reverse().then((f) {
         if (tabType == BottomBarType.Explore) {
           setState(() {
             currentPage = ExplorePage(

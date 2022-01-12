@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:motel/modules/_common/widget/rating_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class RatingView extends StatelessWidget {
-  final HotelListData hotelData;
+  final HotelListData? hotelData;
 
-  const RatingView({Key key, this.hotelData}) : super(key: key);
+  const RatingView({Key? key, this.hotelData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class RatingView extends StatelessWidget {
                 SizedBox(
                   width: 60,
                   child: Text(
-                    (hotelData.rating * 2).toStringAsFixed(1),
+                    (hotelData!.rating * 2).toStringAsFixed(1),
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -56,13 +56,10 @@ class RatingView extends StatelessWidget {
                             color: AppTheme.getTheme().disabledColor.withOpacity(0.8),
                           ),
                         ),
-                        SmoothStarRating(
-                          allowHalfRating: true,
-                          starCount: 5,
-                          rating: hotelData.rating,
+                        RatingBarWidget(
+                          rating: hotelData!.rating,
                           size: 16,
-                          color: AppTheme.getTheme().primaryColor,
-                          borderColor: AppTheme.getTheme().primaryColor,
+                          activeColor: AppTheme.getTheme().primaryColor,
                         ),
                       ],
                     ),

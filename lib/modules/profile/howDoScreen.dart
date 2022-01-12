@@ -3,9 +3,9 @@ import '../../app/ui/appTheme.dart';
 import '../../models/settingListData.dart';
 
 class HowDoScreen extends StatefulWidget {
-  final String title;
+  final String? title;
 
-  const HowDoScreen({Key key, this.title = ""}) : super(key: key);
+  const HowDoScreen({Key? key, this.title = ""}) : super(key: key);
   @override
   _HowDoScreenState createState() => _HowDoScreenState();
 }
@@ -51,7 +51,7 @@ class _HowDoScreenState extends State<HowDoScreen> {
                                       ? Padding(
                                           padding: const EdgeInsets.all(16.0),
                                           child: Text(
-                                            subHelpList[index].titleTxt,
+                                            subHelpList[index].titleTxt!,
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                                           ),
                                         )
@@ -59,7 +59,7 @@ class _HowDoScreenState extends State<HowDoScreen> {
                                           padding: const EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 16),
                                           child: Container(
                                             child: Text(
-                                              subHelpList[index].subTxt,
+                                              subHelpList[index].subTxt!,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 16,
@@ -128,7 +128,7 @@ class _HowDoScreenState extends State<HowDoScreen> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24, bottom: 24),
           child: Text(
-            widget.title,
+            widget.title!,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

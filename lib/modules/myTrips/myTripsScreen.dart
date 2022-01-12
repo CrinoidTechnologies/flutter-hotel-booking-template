@@ -5,15 +5,15 @@ import '../myTrips/finishTripView.dart';
 import '../myTrips/upcomingListView.dart';
 
 class MyTripsScreen extends StatefulWidget {
-  final AnimationController animationController;
+  final AnimationController? animationController;
 
-  const MyTripsScreen({Key key, this.animationController}) : super(key: key);
+  const MyTripsScreen({Key? key, this.animationController}) : super(key: key);
   @override
   _MyTripsScreenState createState() => _MyTripsScreenState();
 }
 
 class _MyTripsScreenState extends State<MyTripsScreen> with TickerProviderStateMixin {
-  AnimationController tabAnimationController;
+  AnimationController? tabAnimationController;
 
   Widget indexView = Container();
   TopBarType topBarType = TopBarType.Upcomming;
@@ -24,8 +24,8 @@ class _MyTripsScreenState extends State<MyTripsScreen> with TickerProviderStateM
     indexView = UpcomingListView(
       animationController: tabAnimationController,
     );
-    tabAnimationController..forward();
-    widget.animationController.forward();
+    tabAnimationController?..forward();
+    widget.animationController!.forward();
 
     super.initState();
   }
@@ -37,19 +37,19 @@ class _MyTripsScreenState extends State<MyTripsScreen> with TickerProviderStateM
 
   @override
   void dispose() {
-    tabAnimationController.dispose();
+    tabAnimationController!.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: widget.animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: widget.animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: widget.animationController,
+          opacity: widget.animationController!,
           child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - widget.animationController.value), 0.0),
+            transform: new Matrix4.translationValues(0.0, 40 * (1.0 - widget.animationController!.value), 0.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +73,7 @@ class _MyTripsScreenState extends State<MyTripsScreen> with TickerProviderStateM
   void tabClick(TopBarType tabType) {
     if (tabType != topBarType) {
       topBarType = tabType;
-      tabAnimationController.reverse().then((f) {
+      tabAnimationController!.reverse().then((f) {
         if (tabType == TopBarType.Upcomming) {
           setState(() {
             indexView = UpcomingListView(

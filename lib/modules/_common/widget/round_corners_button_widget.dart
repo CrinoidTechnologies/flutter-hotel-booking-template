@@ -3,12 +3,12 @@ import 'package:motel/app/ui/appTheme.dart';
 
 class RoundCornerButtonWidget extends StatelessWidget {
   const RoundCornerButtonWidget(
-      {Key key, this.bgColor, this.prefixIcon, this.title, this.onTap})
+      {Key? key, this.bgColor, this.prefixIcon, this.title, this.onTap})
       : super(key: key);
-  final Color bgColor;
-  final Widget prefixIcon;
-  final String title;
-  final VoidCallback onTap;
+  final Color? bgColor;
+  final Widget? prefixIcon;
+  final String? title;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class RoundCornerButtonWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(24.0)),
           highlightColor: Colors.transparent,
           onTap: () {
-            if (onTap != null) onTap();
+            if (onTap != null) onTap!();
           },
           child: Center(
             child: Row(
@@ -39,7 +39,7 @@ class RoundCornerButtonWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 if (prefixIcon != null) ...[
-                  prefixIcon,
+                  prefixIcon!,
                   SizedBox(
                     width: 4,
                   )

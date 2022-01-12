@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:motel/modules/_common/widget/rating_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
 import '../hotelBooking/calendarPopupView.dart';
@@ -8,7 +9,6 @@ import '../hotelBooking/roomPopupView.dart';
 import '../hotelDetailes/roomBookingScreen.dart';
 import '../hotelDetailes/searchScreen.dart';
 import '../myTrips/upcomingListView.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'filtersScreen.dart';
 
 class HotelHomeScreen extends StatefulWidget {
@@ -16,9 +16,10 @@ class HotelHomeScreen extends StatefulWidget {
   _HotelHomeScreenState createState() => _HotelHomeScreenState();
 }
 
-class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderStateMixin {
-  AnimationController animationController;
-  AnimationController _animationController;
+class _HotelHomeScreenState extends State<HotelHomeScreen>
+    with TickerProviderStateMixin {
+  AnimationController? animationController;
+  late AnimationController _animationController;
   var hotelList = HotelListData.hotelList;
   ScrollController scrollController = new ScrollController();
   int room = 1;
@@ -29,17 +30,22 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
 
   final searchBarHieght = 158.0;
   final filterBarHieght = 52.0;
+
   @override
   void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
-    _animationController = AnimationController(duration: Duration(milliseconds: 0), vsync: this);
+    animationController = AnimationController(
+        duration: Duration(milliseconds: 1000), vsync: this);
+    _animationController =
+        AnimationController(duration: Duration(milliseconds: 0), vsync: this);
     scrollController.addListener(() {
       if (context != null) {
         if (scrollController.offset <= 0) {
           _animationController.animateTo(0.0);
-        } else if (scrollController.offset > 0.0 && scrollController.offset < searchBarHieght) {
+        } else if (scrollController.offset > 0.0 &&
+            scrollController.offset < searchBarHieght) {
           // we need around searchBarHieght scrolling values in 0.0 to 1.0
-          _animationController.animateTo((scrollController.offset / searchBarHieght));
+          _animationController
+              .animateTo((scrollController.offset / searchBarHieght));
         } else {
           _animationController.animateTo(1.0);
         }
@@ -55,7 +61,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -85,7 +91,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                               child: Stack(
                                 children: <Widget>[
                                       SizedBox(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         child: Image.asset(
                                           "assets/images/mapImage.png",
                                           fit: BoxFit.cover,
@@ -96,8 +103,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                                         decoration: BoxDecoration(
                                           gradient: LinearGradient(
                                             colors: [
-                                              AppTheme.getTheme().scaffoldBackgroundColor.withOpacity(1.0),
-                                              AppTheme.getTheme().scaffoldBackgroundColor.withOpacity(0.0),
+                                              AppTheme.getTheme()
+                                                  .scaffoldBackgroundColor
+                                                  .withOpacity(1.0),
+                                              AppTheme.getTheme()
+                                                  .scaffoldBackgroundColor
+                                                  .withOpacity(0.0),
                                             ],
                                             begin: Alignment.topCenter,
                                             end: Alignment.bottomCenter,
@@ -116,7 +127,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                                           // color: Colors.green,
                                           child: ListView.builder(
                                             itemCount: hotelList.length,
-                                            padding: EdgeInsets.only(top: 8, bottom: 8, right: 16),
+                                            padding: EdgeInsets.only(
+                                                top: 8, bottom: 8, right: 16),
                                             scrollDirection: Axis.horizontal,
                                             itemBuilder: (context, index) {
                                               return MapHotelListView(
@@ -124,8 +136,11 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
-                                                      builder: (context) => RoomBookingScreen(
-                                                        hotelName: hotelList[index].titleTxt,
+                                                      builder: (context) =>
+                                                          RoomBookingScreen(
+                                                        hotelName:
+                                                            hotelList[index]
+                                                                .titleTxt,
                                                       ),
                                                     ),
                                                   );
@@ -155,17 +170,25 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                                 ),
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
-                                  var count = hotelList.length > 10 ? 10 : hotelList.length;
-                                  var animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-                                      parent: animationController, curve: Interval((1 / count) * index, 1.0, curve: Curves.fastOutSlowIn)));
-                                  animationController.forward();
+                                  var count = hotelList.length > 10
+                                      ? 10
+                                      : hotelList.length;
+                                  var animation = Tween(begin: 0.0, end: 1.0)
+                                      .animate(CurvedAnimation(
+                                          parent: animationController!,
+                                          curve: Interval(
+                                              (1 / count) * index, 1.0,
+                                              curve: Curves.fastOutSlowIn)));
+                                  animationController!.forward();
                                   return HotelListView(
                                     callback: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => RoomBookingScreen(
-                                            hotelName: hotelList[index].titleTxt,
+                                          builder: (context) =>
+                                              RoomBookingScreen(
+                                            hotelName:
+                                                hotelList[index].titleTxt,
                                           ),
                                         ),
                                       );
@@ -179,15 +202,17 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                             ),
                             AnimatedBuilder(
                               animation: _animationController,
-                              builder: (BuildContext context, Widget child) {
+                              builder: (BuildContext context, Widget? child) {
                                 return Positioned(
-                                  top: -searchBarHieght * (_animationController.value),
+                                  top: -searchBarHieght *
+                                      (_animationController.value),
                                   left: 0,
                                   right: 0,
                                   child: Column(
                                     children: <Widget>[
                                       Container(
-                                        color: AppTheme.getTheme().scaffoldBackgroundColor,
+                                        color: AppTheme.getTheme()
+                                            .scaffoldBackgroundColor,
                                         child: Column(
                                           children: <Widget>[
                                             getSearchBarUI(),
@@ -216,10 +241,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
     List<Widget> list = [];
 
     for (var i = 0; i < hotelList.length; i++) {
-      double top;
-      double left;
-      double right;
-      double bottom;
+      double? top;
+      double? left;
+      double? right;
+      double? bottom;
       if (i == 0) {
         top = 150;
         left = 50;
@@ -244,7 +269,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
           bottom: bottom,
           child: Container(
             decoration: BoxDecoration(
-              color: hotelList[i].isSelected ? AppTheme.getTheme().primaryColor : AppTheme.getTheme().backgroundColor,
+              color: hotelList[i].isSelected
+                  ? AppTheme.getTheme().primaryColor
+                  : AppTheme.getTheme().backgroundColor,
               borderRadius: BorderRadius.all(Radius.circular(24.0)),
               boxShadow: <BoxShadow>[
                 BoxShadow(
@@ -269,11 +296,14 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                   }
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                  padding: const EdgeInsets.only(
+                      left: 16, right: 16, top: 8, bottom: 8),
                   child: Text(
                     "\$${hotelList[i].perNight}",
                     style: TextStyle(
-                        color: hotelList[i].isSelected ? AppTheme.getTheme().backgroundColor : AppTheme.getTheme().primaryColor,
+                        color: hotelList[i].isSelected
+                            ? AppTheme.getTheme().backgroundColor
+                            : AppTheme.getTheme().primaryColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w600),
                   ),
@@ -292,7 +322,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
       decoration: BoxDecoration(
         color: AppTheme.getTheme().backgroundColor,
         boxShadow: <BoxShadow>[
-          BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(0, -2), blurRadius: 8.0),
+          BoxShadow(
+              color: AppTheme.getTheme().dividerColor,
+              offset: Offset(0, -2),
+              blurRadius: 8.0),
         ],
       ),
       child: Column(
@@ -311,8 +344,11 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                     itemBuilder: (context, index) {
                       var count = hotelList.length > 10 ? 10 : hotelList.length;
                       var animation = Tween(begin: 0.0, end: 1.0).animate(
-                          CurvedAnimation(parent: animationController, curve: Interval((1 / count) * index, 1.0, curve: Curves.fastOutSlowIn)));
-                      animationController.forward();
+                          CurvedAnimation(
+                              parent: animationController!,
+                              curve: Interval((1 / count) * index, 1.0,
+                                  curve: Curves.fastOutSlowIn)));
+                      animationController!.forward();
                       return HotelListView(
                         callback: () {},
                         hotelData: hotelList[index],
@@ -336,7 +372,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
       var count = hotelList.length;
       var animation = Tween(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
-          parent: animationController,
+          parent: animationController!,
           curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
         ),
       );
@@ -349,7 +385,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
         ),
       );
     }
-    animationController.forward();
+    animationController!.forward();
     return Column(
       children: hotelListViews,
     );
@@ -381,14 +417,18 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                       showDemoDialog(context: context);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                      padding: const EdgeInsets.only(
+                          left: 8, right: 8, top: 4, bottom: 4),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             "Choose date",
-                            style: TextStyle(fontWeight: FontWeight.w100, fontSize: 16, color: Colors.grey.withOpacity(0.8)),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w100,
+                                fontSize: 16,
+                                color: Colors.grey.withOpacity(0.8)),
                           ),
                           SizedBox(
                             height: 8,
@@ -448,14 +488,18 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                      padding: const EdgeInsets.only(
+                          left: 8, right: 8, top: 4, bottom: 4),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             "Number of Rooms",
-                            style: TextStyle(fontWeight: FontWeight.w100, fontSize: 16, color: Colors.grey.withOpacity(0.8)),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w100,
+                                fontSize: 16,
+                                color: Colors.grey.withOpacity(0.8)),
                           ),
                           SizedBox(
                             height: 8,
@@ -495,18 +539,24 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                     Radius.circular(38.0),
                   ),
                   boxShadow: <BoxShadow>[
-                    BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(0, 2), blurRadius: 8.0),
+                    BoxShadow(
+                        color: AppTheme.getTheme().dividerColor,
+                        offset: Offset(0, 2),
+                        blurRadius: 8.0),
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  padding: const EdgeInsets.only(
+                      left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
                     onChanged: (String txt) {},
                     onTap: () {
                       FocusScope.of(context).requestFocus(FocusNode());
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SearchScreen(), fullscreenDialog: true),
+                        MaterialPageRoute(
+                            builder: (context) => SearchScreen(),
+                            fullscreenDialog: true),
                       );
                     },
                     style: TextStyle(
@@ -529,7 +579,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                 Radius.circular(38.0),
               ),
               boxShadow: <BoxShadow>[
-                BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(0, 2), blurRadius: 8.0),
+                BoxShadow(
+                    color: AppTheme.getTheme().dividerColor,
+                    offset: Offset(0, 2),
+                    blurRadius: 8.0),
               ],
             ),
             child: Material(
@@ -542,12 +595,15 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                   FocusScope.of(context).requestFocus(FocusNode());
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SearchScreen(), fullscreenDialog: true),
+                    MaterialPageRoute(
+                        builder: (context) => SearchScreen(),
+                        fullscreenDialog: true),
                   );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Icon(FontAwesomeIcons.search, size: 20, color: AppTheme.getTheme().backgroundColor),
+                  child: Icon(FontAwesomeIcons.search,
+                      size: 20, color: AppTheme.getTheme().backgroundColor),
                 ),
               ),
             ),
@@ -569,7 +625,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
             decoration: BoxDecoration(
               color: AppTheme.getTheme().backgroundColor,
               boxShadow: <BoxShadow>[
-                BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(0, -2), blurRadius: 8.0),
+                BoxShadow(
+                    color: AppTheme.getTheme().dividerColor,
+                    offset: Offset(0, -2),
+                    blurRadius: 8.0),
               ],
             ),
           ),
@@ -577,7 +636,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
         Container(
           color: AppTheme.getTheme().backgroundColor,
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 4),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 4),
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -606,7 +666,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                       FocusScope.of(context).requestFocus(FocusNode());
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FiltersScreen(), fullscreenDialog: true),
+                        MaterialPageRoute(
+                            builder: (context) => FiltersScreen(),
+                            fullscreenDialog: true),
                       );
                     },
                     child: Padding(
@@ -622,7 +684,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(Icons.sort, color: AppTheme.getTheme().primaryColor),
+                            child: Icon(Icons.sort,
+                                color: AppTheme.getTheme().primaryColor),
                           ),
                         ],
                       ),
@@ -645,7 +708,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
     );
   }
 
-  void showDemoDialog({BuildContext context}) {
+  void showDemoDialog({required BuildContext context}) {
     showDialog(
       context: context,
       builder: (BuildContext context) => CalendarPopupView(
@@ -654,7 +717,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
         //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
         initialEndDate: endDate,
         initialStartDate: startDate,
-        onApplyClick: (DateTime startData, DateTime endData) {
+        onApplyClick: (DateTime? startData, DateTime? endData) {
           setState(() {
             if (startData != null && endData != null) {
               startDate = startData;
@@ -672,11 +735,15 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
       decoration: BoxDecoration(
         color: AppTheme.getTheme().backgroundColor,
         boxShadow: <BoxShadow>[
-          BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(0, 2), blurRadius: 8.0),
+          BoxShadow(
+              color: AppTheme.getTheme().dividerColor,
+              offset: Offset(0, 2),
+              blurRadius: 8.0),
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top, left: 8, right: 8),
+        padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top, left: 8, right: 8),
         child: Row(
           children: <Widget>[
             Container(
@@ -743,7 +810,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(isMap ? Icons.sort : FontAwesomeIcons.mapMarkedAlt),
+                        child: Icon(
+                            isMap ? Icons.sort : FontAwesomeIcons.mapMarkedAlt),
                       ),
                     ),
                   ),
@@ -758,10 +826,11 @@ class _HotelHomeScreenState extends State<HotelHomeScreen> with TickerProviderSt
 }
 
 class MapHotelListView extends StatelessWidget {
-  final VoidCallback callback;
-  final HotelListData hotelData;
+  final VoidCallback? callback;
+  final HotelListData? hotelData;
 
-  const MapHotelListView({Key key, this.hotelData, this.callback}) : super(key: key);
+  const MapHotelListView({Key? key, this.hotelData, this.callback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -790,7 +859,7 @@ class MapHotelListView extends StatelessWidget {
                     AspectRatio(
                       aspectRatio: 0.90,
                       child: Image.asset(
-                        hotelData.imagePath,
+                        hotelData!.imagePath,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -802,7 +871,7 @@ class MapHotelListView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              hotelData.titleTxt,
+                              hotelData!.titleTxt,
                               maxLines: 2,
                               textAlign: TextAlign.left,
                               style: TextStyle(
@@ -812,8 +881,10 @@ class MapHotelListView extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
-                              hotelData.subTxt,
-                              style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                              hotelData!.subTxt,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey.withOpacity(0.8)),
                             ),
                             Expanded(
                               child: SizedBox(),
@@ -825,32 +896,36 @@ class MapHotelListView extends StatelessWidget {
                                 Container(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Icon(
                                             FontAwesomeIcons.mapMarkerAlt,
                                             size: 12,
-                                            color: AppTheme.getTheme().primaryColor,
+                                            color: AppTheme.getTheme()
+                                                .primaryColor,
                                           ),
                                           Text(
-                                            " ${hotelData.dist.toStringAsFixed(1)} km to city",
+                                            " ${hotelData!.dist.toStringAsFixed(1)} km to city",
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.grey
+                                                    .withOpacity(0.8)),
                                           ),
                                         ],
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 4),
-                                        child: SmoothStarRating(
-                                          allowHalfRating: true,
-                                          starCount: 5,
-                                          rating: hotelData.rating,
+                                        child: RatingBarWidget(
+                                          rating: hotelData!.rating,
                                           size: 20,
-                                          color: AppTheme.getTheme().primaryColor,
-                                          borderColor: AppTheme.getTheme().primaryColor,
+                                          activeColor:
+                                              AppTheme.getTheme().primaryColor,
                                         ),
                                       ),
                                     ],
@@ -863,7 +938,7 @@ class MapHotelListView extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
                                       Text(
-                                        "\$${hotelData.perNight}",
+                                        "\$${hotelData!.perNight}",
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
@@ -872,7 +947,10 @@ class MapHotelListView extends StatelessWidget {
                                       ),
                                       Text(
                                         "/per night",
-                                        style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color:
+                                                Colors.grey.withOpacity(0.8)),
                                       ),
                                     ],
                                   ),
@@ -889,9 +967,10 @@ class MapHotelListView extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     highlightColor: Colors.transparent,
-                    splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.1),
+                    splashColor:
+                        AppTheme.getTheme().primaryColor.withOpacity(0.1),
                     onTap: () {
-                      callback();
+                      callback!();
                     },
                   ),
                 ),

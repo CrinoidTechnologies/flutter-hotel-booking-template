@@ -16,13 +16,13 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   static restartApp(BuildContext context) {
-    final _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    final _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
 
     state.restartApp();
   }
 
   static setCustomeTheme(BuildContext context) {
-    final _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    final _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
     state.setCustomeTheme();
   }
 
@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.getTheme(),
           routes: routes,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Directionality(
               textDirection: TextDirection.ltr,
               child: Builder(
@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                               ? 0.9
                               : 0.8,
                     ),
-                    child: child,
+                    child: child!,
                   );
                 },
               ),

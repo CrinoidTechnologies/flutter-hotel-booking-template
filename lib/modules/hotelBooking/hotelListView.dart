@@ -1,39 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/modules/_common/widget/rating_widget.dart';
 import '../../app/ui/appTheme.dart';
 import '../../models/hotelListData.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class HotelListView extends StatelessWidget {
-  final VoidCallback callback;
-  final HotelListData hotelData;
-  final AnimationController animationController;
-  final Animation animation;
+  final VoidCallback? callback;
+  final HotelListData? hotelData;
+  final AnimationController? animationController;
+  final Animation? animation;
 
-  const HotelListView({Key key, this.hotelData, this.animationController, this.animation, this.callback}) : super(key: key);
+  const HotelListView(
+      {Key? key,
+      this.hotelData,
+      this.animationController,
+      this.animation,
+      this.callback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation,
+          opacity: animation as Animation<double>,
           child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 50 * (1.0 - animation.value), 0.0),
+            transform: new Matrix4.translationValues(
+                0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
+              padding: const EdgeInsets.only(
+                  left: 24, right: 24, top: 8, bottom: 16),
               child: InkWell(
                 splashColor: Colors.transparent,
                 onTap: () {
-                  callback();
+                  callback!();
                 },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(16.0)),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                        color:AppTheme.getTheme().dividerColor,
+                        color: AppTheme.getTheme().dividerColor,
                         offset: Offset(4, 4),
                         blurRadius: 16,
                       ),
@@ -48,7 +56,7 @@ class HotelListView extends StatelessWidget {
                             AspectRatio(
                               aspectRatio: 2,
                               child: Image.asset(
-                                hotelData.imagePath,
+                                hotelData!.imagePath,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -61,13 +69,16 @@ class HotelListView extends StatelessWidget {
                                   Expanded(
                                     child: Container(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
+                                        padding: const EdgeInsets.only(
+                                            left: 16, top: 8, bottom: 8),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              hotelData.titleTxt,
+                                              hotelData!.titleTxt,
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -75,12 +86,17 @@ class HotelListView extends StatelessWidget {
                                               ),
                                             ),
                                             Row(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: <Widget>[
                                                 Text(
-                                                  hotelData.subTxt,
-                                                  style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                                  hotelData!.subTxt,
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.grey
+                                                          .withOpacity(0.8)),
                                                 ),
                                                 SizedBox(
                                                   width: 4,
@@ -88,32 +104,40 @@ class HotelListView extends StatelessWidget {
                                                 Icon(
                                                   FontAwesomeIcons.mapMarkerAlt,
                                                   size: 12,
-                                                  color: AppTheme.getTheme().primaryColor,
+                                                  color: AppTheme.getTheme()
+                                                      .primaryColor,
                                                 ),
                                                 Expanded(
                                                   child: Text(
-                                                    "${hotelData.dist.toStringAsFixed(1)} km to city",
-                                                    overflow: TextOverflow.ellipsis,
-                                                    style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                                    "${hotelData!.dist.toStringAsFixed(1)} km to city",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.grey
+                                                            .withOpacity(0.8)),
                                                   ),
                                                 ),
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.only(top: 4),
+                                              padding:
+                                                  const EdgeInsets.only(top: 4),
                                               child: Row(
                                                 children: <Widget>[
-                                                  SmoothStarRating(
-                                                    allowHalfRating: true,
-                                                    starCount: 5,
-                                                    rating: hotelData.rating,
+                                                  RatingBarWidget(
+                                                    rating: hotelData!.rating,
                                                     size: 20,
-                                                    color: AppTheme.getTheme().primaryColor,
-                                                    borderColor: AppTheme.getTheme().primaryColor,
+                                                    activeColor:
+                                                        AppTheme.getTheme()
+                                                            .primaryColor,
                                                   ),
                                                   Text(
-                                                    " ${hotelData.reviews} Reviews",
-                                                    style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                                    " ${hotelData!.reviews} Reviews",
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.grey
+                                                            .withOpacity(0.8)),
                                                   ),
                                                 ],
                                               ),
@@ -124,13 +148,16 @@ class HotelListView extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 16, top: 8),
+                                    padding: const EdgeInsets.only(
+                                        right: 16, top: 8),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: <Widget>[
                                         Text(
-                                          "\$${hotelData.perNight}",
+                                          "\$${hotelData!.perNight}",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -139,7 +166,10 @@ class HotelListView extends StatelessWidget {
                                         ),
                                         Text(
                                           "/per night",
-                                          style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color:
+                                                  Colors.grey.withOpacity(0.8)),
                                         ),
                                       ],
                                     ),

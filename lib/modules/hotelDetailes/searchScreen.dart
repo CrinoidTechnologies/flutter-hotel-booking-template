@@ -12,7 +12,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> with TickerProviderStateMixin {
   List<HotelListData> lastsSearchesList = HotelListData.lastsSearchesList;
 
-  AnimationController animationController;
+  AnimationController? animationController;
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _SearchScreenState extends State<SearchScreen> with TickerProviderStateMix
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -164,21 +164,21 @@ class _SearchScreenState extends State<SearchScreen> with TickerProviderStateMix
   }
 
   List<Widget> getPList() {
-    List<Widget> noList = List<Widget>();
+    List<Widget> noList = [];
     var cout = 0;
     final columCount = 2;
     for (var i = 0; i < lastsSearchesList.length / columCount; i++) {
-      List<Widget> listUI = List<Widget>();
+      List<Widget> listUI = [];
       for (var i = 0; i < columCount; i++) {
         try {
           final date = lastsSearchesList[cout];
           var animation = Tween(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
-              parent: animationController,
+              parent: animationController!,
               curve: Interval((1 / lastsSearchesList.length) * cout, 1.0, curve: Curves.fastOutSlowIn),
             ),
           );
-          animationController.forward();
+          animationController!.forward();
           listUI.add(Expanded(
             child: SerchView(
               hotelInfo: date,
@@ -250,21 +250,21 @@ class _SearchScreenState extends State<SearchScreen> with TickerProviderStateMix
 }
 
 class SerchView extends StatelessWidget {
-  final HotelListData hotelInfo;
-  final AnimationController animationController;
-  final Animation animation;
+  final HotelListData? hotelInfo;
+  final AnimationController? animationController;
+  final Animation? animation;
 
-  const SerchView({Key key, this.hotelInfo, this.animationController, this.animation}) : super(key: key);
+  const SerchView({Key? key, this.hotelInfo, this.animationController, this.animation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      animation: animationController!,
+      builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation,
+          opacity: animation as Animation<double>,
           child: new Transform(
-            transform: new Matrix4.translationValues(0.0, 50 * (1.0 - animation.value), 0.0),
+            transform: new Matrix4.translationValues(0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: AspectRatio(
@@ -288,7 +288,7 @@ class SerchView extends StatelessWidget {
                         AspectRatio(
                           aspectRatio: 1.5,
                           child: Image.asset(
-                            hotelInfo.imagePath,
+                            hotelInfo!.imagePath,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -300,11 +300,11 @@ class SerchView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  hotelInfo.titleTxt,
+                                  hotelInfo!.titleTxt,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  hotelInfo.subTxt,
+                                  hotelInfo!.subTxt,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w100,
                                     fontSize: 12,
@@ -312,7 +312,7 @@ class SerchView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  hotelInfo.dateTxt,
+                                  hotelInfo!.dateTxt,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w100,
                                     fontSize: 12,

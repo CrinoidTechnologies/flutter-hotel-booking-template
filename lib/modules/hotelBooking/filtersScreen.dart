@@ -239,7 +239,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         SliderView(
           distValue: distValue,
           onChnagedistValue: (value) {
-            distValue = value;
+            if (value != null) distValue = value;
           },
         ),
         SizedBox(
@@ -360,7 +360,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         RangeSliderView(
           values: _values,
           onChnageRangeValues: (values) {
-            _values = values;
+            if (values != null) _values = values;
           },
         ),
         SizedBox(

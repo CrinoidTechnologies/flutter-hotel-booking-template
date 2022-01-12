@@ -1,23 +1,26 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_page_indicator/flutter_page_indicator.dart';
+import 'package:motel/app/ui/color_helper.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../app/ui/appTheme.dart';
 import '../../onBoadring/introductionScreen.dart';
 
 class ExploreSliderWidget extends StatefulWidget {
   final double opValue;
-  final VoidCallback click;
+  final VoidCallback? click;
 
-  const ExploreSliderWidget({Key key, this.opValue = 0.0, this.click}) : super(key: key);
+  const ExploreSliderWidget({Key? key, this.opValue = 0.0, this.click})
+      : super(key: key);
+
   @override
   _ExploreSliderWidgetState createState() => _ExploreSliderWidgetState();
 }
 
 class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
   var pageController = PageController(initialPage: 0);
-  var pageViewModelData = List<PageViewData>();
+  var pageViewModelData = [];
 
-  Timer sliderTimer;
+  Timer? sliderTimer;
   var currentShowIndex = 0;
 
   @override
@@ -40,11 +43,14 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
 
     sliderTimer = Timer.periodic(Duration(seconds: 4), (timer) {
       if (currentShowIndex == 0) {
-        pageController.animateTo(MediaQuery.of(context).size.width, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(MediaQuery.of(context).size.width,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       } else if (currentShowIndex == 1) {
-        pageController.animateTo(MediaQuery.of(context).size.width * 2, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(MediaQuery.of(context).size.width * 2,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       } else if (currentShowIndex == 2) {
-        pageController.animateTo(0, duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+        pageController.animateTo(0,
+            duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       }
     });
     super.initState();
@@ -53,7 +59,7 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
   @override
   void dispose() {
     sliderTimer?.cancel();
-    pageController?.dispose();
+    pageController.dispose();
     super.dispose();
   }
 
@@ -87,14 +93,14 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
           Positioned(
             bottom: 32,
             right: 32,
-            child: PageIndicator(
-              layout: PageIndicatorLayout.WARM,
-              size: 10.0,
-              controller: pageController,
-              space: 5.0,
+            child: SmoothPageIndicator(
               count: 3,
-              color: Colors.white,
-              activeColor: AppTheme.getTheme().primaryColor,
+              effect: WormEffect(
+                  radius: 10.0,
+                  spacing: 5.0,
+                  dotColor: ColorHelper.lightColor,
+                  activeDotColor: AppTheme.getTheme().primaryColor),
+              controller: pageController,
             ),
           ),
         ],
@@ -104,10 +110,11 @@ class _ExploreSliderWidgetState extends State<ExploreSliderWidget> {
 }
 
 class PagePopup extends StatelessWidget {
-  final PageViewData imageData;
+  final PageViewData? imageData;
   final double opValue;
 
-  const PagePopup({Key key, this.imageData, this.opValue: 0.0}) : super(key: key);
+  const PagePopup({Key? key, this.imageData, this.opValue: 0.0})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +124,7 @@ class PagePopup extends StatelessWidget {
           height: (MediaQuery.of(context).size.width * 1.3),
           width: MediaQuery.of(context).size.width,
           child: Image.asset(
-            imageData.assetsImage,
+            imageData!.assetsImage!,
             fit: BoxFit.cover,
           ),
         ),
@@ -132,7 +139,7 @@ class PagePopup extends StatelessWidget {
               children: <Widget>[
                 Container(
                   child: Text(
-                    imageData.titleText,
+                    imageData!.titleText!,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 26,
@@ -146,7 +153,7 @@ class PagePopup extends StatelessWidget {
                 ),
                 Container(
                   child: Text(
-                    imageData.subText,
+                    imageData!.subText!,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 18,

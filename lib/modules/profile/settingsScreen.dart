@@ -89,7 +89,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
-                                    settingsList[index].titleTxt,
+                                    settingsList[index].titleTxt!,
                                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                                   ),
                                 ),
