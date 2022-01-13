@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../settings/domain/entities/setting_entity.dart';
 import 'feedback_page.dart';
@@ -130,7 +131,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "How can we help?",
+            S.of(context).howCanWeHelp,
             style: new TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: AppTheme.getTheme().backgroundColor),
           ),
         ),
@@ -178,7 +179,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                           decoration: new InputDecoration(
                             errorText: null,
                             border: InputBorder.none,
-                            hintText: "Search help articales",
+                            hintText: S.of(context).searchHelpArticles,
                             hintStyle: TextStyle(color: AppTheme.getTheme().disabledColor),
                           ),
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../settings/domain/entities/setting_entity.dart';
 
@@ -197,7 +198,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Edit Profile",
+            S.of(context).editProfile,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import 'custom_calendar_widget.dart';
 
@@ -105,7 +106,7 @@ class _CalendarPopupWidgetState extends State<CalendarPopupWidget>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        "From",
+                                        S.of(context).from,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
@@ -141,7 +142,7 @@ class _CalendarPopupWidgetState extends State<CalendarPopupWidget>
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        "To",
+                                        S.of(context).to,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 16,
@@ -198,30 +199,27 @@ class _CalendarPopupWidgetState extends State<CalendarPopupWidget>
                                     ),
                                   ],
                                 ),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: InkWell(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(24.0)),
-                                    highlightColor: Colors.transparent,
-                                    onTap: () {
-                                      try {
-                                        // animationController.reverse().then((f) {
+                                child: InkWell(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(24.0)),
+                                  highlightColor: Colors.transparent,
+                                  onTap: () {
+                                    try {
+                                      // animationController.reverse().then((f) {
 
-                                        // });
-                                        widget.onApplyClick!(
-                                            startDate, endDate);
-                                        Navigator.pop(context);
-                                      } catch (e) {}
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        "Apply",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 18,
-                                            color: Colors.white),
-                                      ),
+                                      // });
+                                      widget.onApplyClick!(
+                                          startDate, endDate);
+                                      Navigator.pop(context);
+                                    } catch (e) {}
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      S.of(context).apply,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                          color: Colors.white),
                                     ),
                                   ),
                                 ),

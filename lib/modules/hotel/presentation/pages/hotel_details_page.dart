@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
 import 'package:motel/modules/hotel/presentation/widget/review_list_row_widget.dart';
@@ -97,7 +98,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                     children: <Widget>[
                       Expanded(
                         child: Text(
-                          "Summary",
+                          S.of(context).summary,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
@@ -124,7 +125,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                           recognizer: new TapGestureRecognizer()..onTap = () {},
                         ),
                         TextSpan(
-                          text: !isReadLess ? ' Read more' : " less",
+                          text: !isReadLess ? S.of(context).readMore : S.of(context).less,
                           style: TextStyle(
                             fontSize: 14,
                             color: AppTheme.getTheme().primaryColor,
@@ -155,7 +156,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                     children: <Widget>[
                       Expanded(
                         child: Text(
-                          "Photos",
+                          S.of(context).photos,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
@@ -163,35 +164,32 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'View all',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
+                      InkWell(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                S.of(context).viewAll,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: AppTheme.getTheme().primaryColor,
                                 ),
-                                SizedBox(
-                                  height: 38,
-                                  width: 26,
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    size: 18,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
+                              ),
+                              SizedBox(
+                                height: 38,
+                                width: 26,
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 18,
+                                  color: AppTheme.getTheme().primaryColor,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       )
@@ -205,7 +203,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                     children: <Widget>[
                       Expanded(
                         child: Text(
-                          "Reviews (8)",
+                          S.of(context).reviews8,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
@@ -213,42 +211,39 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ReviewListPage(),
-                                  fullscreenDialog: true),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'View all',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
+                      InkWell(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ReviewListPage(),
+                                fullscreenDialog: true),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                S.of(context).viewAll,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: AppTheme.getTheme().primaryColor,
                                 ),
-                                SizedBox(
-                                  height: 38,
-                                  width: 26,
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    size: 14,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
+                              ),
+                              SizedBox(
+                                height: 38,
+                                width: 26,
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 14,
+                                  color: AppTheme.getTheme().primaryColor,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       )
@@ -327,26 +322,23 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                                 .disabledColor
                                 .withOpacity(0.4),
                             shape: BoxShape.circle),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(32.0),
-                            ),
-                            onTap: () {
-                              if (scrollController.offset != 0.0) {
-                                scrollController.animateTo(0.0,
-                                    duration: Duration(milliseconds: 480),
-                                    curve: Curves.easeInOutQuad);
-                              } else {
-                                Navigator.pop(context);
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(Icons.arrow_back,
-                                  color: AppTheme.getTheme().backgroundColor),
-                            ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(32.0),
+                          ),
+                          onTap: () {
+                            if (scrollController.offset != 0.0) {
+                              scrollController.animateTo(0.0,
+                                  duration: Duration(milliseconds: 480),
+                                  curve: Curves.easeInOutQuad);
+                            } else {
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.arrow_back,
+                                color: AppTheme.getTheme().backgroundColor),
                           ),
                         ),
                       ),
@@ -365,25 +357,22 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                         decoration: BoxDecoration(
                             color: AppTheme.getTheme().backgroundColor,
                             shape: BoxShape.circle),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(32.0),
-                            ),
-                            onTap: () {
-                              setState(() {
-                                isFav = !isFav;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                  isFav
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: AppTheme.getTheme().primaryColor),
-                            ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(32.0),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              isFav = !isFav;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                                isFav
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: AppTheme.getTheme().primaryColor),
                           ),
                         ),
                       ),
@@ -499,59 +488,56 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                                   sigmaX: 10.0, sigmaY: 10.0),
                               child: Container(
                                 color: Colors.black12,
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: InkWell(
-                                    highlightColor: Colors.transparent,
-                                    splashColor: AppTheme.getTheme()
-                                        .primaryColor
-                                        .withOpacity(0.2),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(38)),
-                                    onTap: () {
-                                      try {
-                                        scrollController.animateTo(
-                                            MediaQuery.of(context).size.height -
-                                                MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    5,
-                                            duration:
-                                                Duration(milliseconds: 500),
-                                            curve: Curves.fastOutSlowIn);
-                                      } catch (e) {}
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 16,
-                                          right: 16,
-                                          top: 4,
-                                          bottom: 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            'More Details',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                child: InkWell(
+                                  highlightColor: Colors.transparent,
+                                  splashColor: AppTheme.getTheme()
+                                      .primaryColor
+                                      .withOpacity(0.2),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(38)),
+                                  onTap: () {
+                                    try {
+                                      scrollController.animateTo(
+                                          MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5,
+                                          duration:
+                                              Duration(milliseconds: 500),
+                                          curve: Curves.fastOutSlowIn);
+                                    } catch (e) {}
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 16,
+                                        right: 16,
+                                        top: 4,
+                                        bottom: 4),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          S.of(context).moreDetails,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 2),
-                                            child: Icon(
-                                              Icons.keyboard_arrow_down,
-                                              color: Colors.white,
-                                              size: 24,
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 2),
+                                          child: Icon(
+                                            Icons.keyboard_arrow_down,
+                                            color: Colors.white,
+                                            size: 24,
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -669,7 +655,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
               ),
             ),
             Text(
-              "/per night",
+              S.of(context).perNight,
               style: TextStyle(
                 fontSize: 14,
                 color: isInList
@@ -684,7 +670,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
   }
 
   Widget getBookNowButton() => RoundCornerButtonWidget(
-        title: 'Book now',
+        title: S.of(context).bookNow,
         onTap: () {
           Navigator.push(
             context,

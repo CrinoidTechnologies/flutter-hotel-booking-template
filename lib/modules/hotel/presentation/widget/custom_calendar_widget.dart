@@ -84,21 +84,18 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                         color: AppTheme.getTheme().dividerColor,
                       ),
                     ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                        onTap: () {
-                          setState(() {
-                            currentMonthDate = DateTime(currentMonthDate.year,
-                                currentMonthDate.month, 0);
-                            setListOfDate(currentMonthDate);
-                          });
-                        },
-                        child: Icon(
-                          Icons.keyboard_arrow_left,
-                          color: Colors.grey,
-                        ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                      onTap: () {
+                        setState(() {
+                          currentMonthDate = DateTime(currentMonthDate.year,
+                              currentMonthDate.month, 0);
+                          setListOfDate(currentMonthDate);
+                        });
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
@@ -127,21 +124,18 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                         color: AppTheme.getTheme().dividerColor,
                       ),
                     ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                        onTap: () {
-                          setState(() {
-                            currentMonthDate = DateTime(currentMonthDate.year,
-                                currentMonthDate.month + 2, 0);
-                            setListOfDate(currentMonthDate);
-                          });
-                        },
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.grey,
-                        ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                      onTap: () {
+                        setState(() {
+                          currentMonthDate = DateTime(currentMonthDate.year,
+                              currentMonthDate.month + 2, 0);
+                          setListOfDate(currentMonthDate);
+                        });
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
@@ -202,130 +196,124 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top: 3, bottom: 3),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              top: 2,
-                              bottom: 2,
-                              left: isStartDateRadius(date) ? 4 : 0,
-                              right: isEndDateRadius(date) ? 4 : 0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: startDate != null && endDate != null
-                                  ? getIsItStartAndEndDate(date) ||
-                                          getIsInRange(date)
-                                      ? AppTheme.getTheme()
-                                          .primaryColor
-                                          .withOpacity(0.4)
-                                      : Colors.transparent
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: isStartDateRadius(date)
-                                    ? Radius.circular(24.0)
-                                    : Radius.circular(0.0),
-                                topLeft: isStartDateRadius(date)
-                                    ? Radius.circular(24.0)
-                                    : Radius.circular(0.0),
-                                topRight: isEndDateRadius(date)
-                                    ? Radius.circular(24.0)
-                                    : Radius.circular(0.0),
-                                bottomRight: isEndDateRadius(date)
-                                    ? Radius.circular(24.0)
-                                    : Radius.circular(0.0),
-                              ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                            left: isStartDateRadius(date) ? 4 : 0,
+                            right: isEndDateRadius(date) ? 4 : 0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: startDate != null && endDate != null
+                                ? getIsItStartAndEndDate(date) ||
+                                        getIsInRange(date)
+                                    ? AppTheme.getTheme()
+                                        .primaryColor
+                                        .withOpacity(0.4)
+                                    : Colors.transparent
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: isStartDateRadius(date)
+                                  ? Radius.circular(24.0)
+                                  : Radius.circular(0.0),
+                              topLeft: isStartDateRadius(date)
+                                  ? Radius.circular(24.0)
+                                  : Radius.circular(0.0),
+                              topRight: isEndDateRadius(date)
+                                  ? Radius.circular(24.0)
+                                  : Radius.circular(0.0),
+                              bottomRight: isEndDateRadius(date)
+                                  ? Radius.circular(24.0)
+                                  : Radius.circular(0.0),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                        onTap: () {
-                          if (currentMonthDate.month == date.month) {
-                            if (widget.minimumDate != null &&
-                                widget.maximumDate != null) {
-                              var newminimumDate = DateTime(
-                                  widget.minimumDate!.year,
-                                  widget.minimumDate!.month,
-                                  widget.minimumDate!.day - 1);
-                              var newmaximumDate = DateTime(
-                                  widget.maximumDate!.year,
-                                  widget.maximumDate!.month,
-                                  widget.maximumDate!.day + 1);
-                              if (date.isAfter(newminimumDate) &&
-                                  date.isBefore(newmaximumDate)) {
-                                onDateClick(date);
-                              }
-                            } else if (widget.minimumDate != null) {
-                              var newminimumDate = DateTime(
-                                  widget.minimumDate!.year,
-                                  widget.minimumDate!.month,
-                                  widget.minimumDate!.day - 1);
-                              if (date.isAfter(newminimumDate)) {
-                                onDateClick(date);
-                              }
-                            } else if (widget.maximumDate != null) {
-                              var newmaximumDate = DateTime(
-                                  widget.maximumDate!.year,
-                                  widget.maximumDate!.month,
-                                  widget.maximumDate!.day + 1);
-                              if (date.isBefore(newmaximumDate)) {
-                                onDateClick(date);
-                              }
-                            } else {
+                    InkWell(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      onTap: () {
+                        if (currentMonthDate.month == date.month) {
+                          if (widget.minimumDate != null &&
+                              widget.maximumDate != null) {
+                            var newminimumDate = DateTime(
+                                widget.minimumDate!.year,
+                                widget.minimumDate!.month,
+                                widget.minimumDate!.day - 1);
+                            var newmaximumDate = DateTime(
+                                widget.maximumDate!.year,
+                                widget.maximumDate!.month,
+                                widget.maximumDate!.day + 1);
+                            if (date.isAfter(newminimumDate) &&
+                                date.isBefore(newmaximumDate)) {
                               onDateClick(date);
                             }
+                          } else if (widget.minimumDate != null) {
+                            var newminimumDate = DateTime(
+                                widget.minimumDate!.year,
+                                widget.minimumDate!.month,
+                                widget.minimumDate!.day - 1);
+                            if (date.isAfter(newminimumDate)) {
+                              onDateClick(date);
+                            }
+                          } else if (widget.maximumDate != null) {
+                            var newmaximumDate = DateTime(
+                                widget.maximumDate!.year,
+                                widget.maximumDate!.month,
+                                widget.maximumDate!.day + 1);
+                            if (date.isBefore(newmaximumDate)) {
+                              onDateClick(date);
+                            }
+                          } else {
+                            onDateClick(date);
                           }
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(2),
-                          child: Container(
-                            decoration: BoxDecoration(
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: getIsItStartAndEndDate(date)
+                                ? AppTheme.getTheme().primaryColor
+                                : Colors.transparent,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0)),
+                            border: Border.all(
                               color: getIsItStartAndEndDate(date)
-                                  ? AppTheme.getTheme().primaryColor
+                                  ? Colors.white
                                   : Colors.transparent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(32.0)),
-                              border: Border.all(
-                                color: getIsItStartAndEndDate(date)
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                width: 2,
-                              ),
-                              boxShadow: getIsItStartAndEndDate(date)
-                                  ? <BoxShadow>[
-                                      BoxShadow(
-                                          color:
-                                              AppTheme.getTheme().disabledColor,
-                                          blurRadius: 4,
-                                          offset: Offset(0, 0)),
-                                    ]
-                                  : null,
+                              width: 2,
                             ),
-                            child: Center(
-                              child: Text(
-                                "${date.day}",
-                                style: TextStyle(
-                                    color: getIsItStartAndEndDate(date)
-                                        ? AppTheme.getTheme()
-                                            .disabledColor
-                                            .withOpacity(1.0)
-                                        : currentMonthDate.month == date.month
-                                            ? AppTheme.getTheme()
-                                                .disabledColor
-                                                .withOpacity(1.0)
-                                            : AppTheme.getTheme().disabledColor,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width > 360
-                                            ? 18
-                                            : 16,
-                                    fontWeight: getIsItStartAndEndDate(date)
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
-                              ),
+                            boxShadow: getIsItStartAndEndDate(date)
+                                ? <BoxShadow>[
+                                    BoxShadow(
+                                        color:
+                                            AppTheme.getTheme().disabledColor,
+                                        blurRadius: 4,
+                                        offset: Offset(0, 0)),
+                                  ]
+                                : null,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "${date.day}",
+                              style: TextStyle(
+                                  color: getIsItStartAndEndDate(date)
+                                      ? AppTheme.getTheme()
+                                          .disabledColor
+                                          .withOpacity(1.0)
+                                      : currentMonthDate.month == date.month
+                                          ? AppTheme.getTheme()
+                                              .disabledColor
+                                              .withOpacity(1.0)
+                                          : AppTheme.getTheme().disabledColor,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width > 360
+                                          ? 18
+                                          : 16,
+                                  fontWeight: getIsItStartAndEndDate(date)
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
                             ),
                           ),
                         ),

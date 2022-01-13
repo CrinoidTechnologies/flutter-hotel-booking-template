@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../main.dart';
 import '../../domain/entities/setting_entity.dart';
 import 'country_list_page.dart';
@@ -32,7 +33,8 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top, bottom: 24),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).padding.top, bottom: 24),
               child: appBar(),
             ),
             Expanded(
@@ -89,7 +91,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                   padding: const EdgeInsets.all(16.0),
                                   child: Text(
                                     settingsList[index].titleTxt!,
-                                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16),
                                   ),
                                 ),
                               ),
@@ -102,7 +106,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
-                                            color: AppTheme.getTheme().disabledColor.withOpacity(0.3),
+                                            color: AppTheme.getTheme()
+                                                .disabledColor
+                                                .withOpacity(0.3),
                                           ),
                                         ),
                                       ),
@@ -116,7 +122,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 16,
-                                                color: AppTheme.getTheme().disabledColor.withOpacity(0.3),
+                                                color: AppTheme.getTheme()
+                                                    .disabledColor
+                                                    .withOpacity(0.3),
                                               ),
                                             ),
                                           ),
@@ -124,8 +132,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                       : Padding(
                                           padding: const EdgeInsets.all(16),
                                           child: Container(
-                                            child:
-                                                Icon(settingsList[index].iconData, color: AppTheme.getTheme().disabledColor.withOpacity(0.3)),
+                                            child: Icon(
+                                                settingsList[index].iconData,
+                                                color: AppTheme.getTheme()
+                                                    .disabledColor
+                                                    .withOpacity(0.3)),
                                           ),
                                         )
                             ],
@@ -165,19 +176,16 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Container(
                   width: AppBar().preferredSize.height - 8,
                   height: AppBar().preferredSize.height - 8,
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_back),
-                      ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(32.0),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.arrow_back),
                     ),
                   ),
                 ),
@@ -190,20 +198,18 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Container(
                   width: AppBar().preferredSize.height - 8,
                   height: AppBar().preferredSize.height - 8,
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () {
-                        
-                        MyApp.setCustomeTheme(context);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(AppTheme.isDark ? FontAwesomeIcons.cloudSun : FontAwesomeIcons.cloudMoon),
-                      ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(32.0),
+                    ),
+                    onTap: () {
+                      MyApp.setCustomeTheme(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(AppTheme.isDark
+                          ? FontAwesomeIcons.cloudSun
+                          : FontAwesomeIcons.cloudMoon),
                     ),
                   ),
                 ),
@@ -214,7 +220,7 @@ class _SettingsPageState extends State<SettingsPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Settings",
+            S.of(context).settings,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

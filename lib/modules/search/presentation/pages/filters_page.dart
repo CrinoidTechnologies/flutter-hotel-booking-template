@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/filter_entity.dart';
 import '../widgets/range_slider_widget.dart';
@@ -79,22 +80,19 @@ class _FiltersPageState extends State<FiltersPage> {
                     ),
                   ],
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Center(
-                      child: Text(
-                        "Apply",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
+                child: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Center(
+                    child: Text(
+                      S.of(context).apply,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: Colors.white),
                     ),
                   ),
                 ),
@@ -115,7 +113,7 @@ class _FiltersPageState extends State<FiltersPage> {
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
           child: Text(
-            "Type of Accommodation",
+            S.of(context).typeOfAccommodation,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -126,7 +124,7 @@ class _FiltersPageState extends State<FiltersPage> {
         Padding(
           padding: const EdgeInsets.only(right: 16, left: 16),
           child: Column(
-            children: getAccomodationListUI(),
+            children: getAccommodationListUI(),
           ),
         ),
         SizedBox(
@@ -136,43 +134,40 @@ class _FiltersPageState extends State<FiltersPage> {
     );
   }
 
-  List<Widget> getAccomodationListUI() {
+  List<Widget> getAccommodationListUI() {
     List<Widget> noList = [];
     for (var i = 0; i < accommodationListData.length; i++) {
       final date = accommodationListData[i];
       noList.add(
-        Material(
-          color: Colors.transparent,
-          child: InkWell(
-            borderRadius: BorderRadius.all(Radius.circular(4.0)),
-            onTap: () {
-              setState(() {
-                checkAppPosition(i);
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      date.titleTxt,
-                      // style: TextStyle(color: Colors.white),
-                    ),
+        InkWell(
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          onTap: () {
+            setState(() {
+              checkAppPosition(i);
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    date.titleTxt,
+                    // style: TextStyle(color: Colors.white),
                   ),
-                  CupertinoSwitch(
-                    activeColor: date.isSelected
-                        ? AppTheme.getTheme().primaryColor
-                        : Colors.grey.withOpacity(0.6),
-                    onChanged: (value) {
-                      setState(() {
-                        checkAppPosition(i);
-                      });
-                    },
-                    value: date.isSelected,
-                  ),
-                ],
-              ),
+                ),
+                CupertinoSwitch(
+                  activeColor: date.isSelected
+                      ? AppTheme.getTheme().primaryColor
+                      : Colors.grey.withOpacity(0.6),
+                  onChanged: (value) {
+                    setState(() {
+                      checkAppPosition(i);
+                    });
+                  },
+                  value: date.isSelected,
+                ),
+              ],
             ),
           ),
         ),
@@ -228,7 +223,7 @@ class _FiltersPageState extends State<FiltersPage> {
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
           child: Text(
-            "Distance from city center",
+            S.of(context).distanceFromCityCenter,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -258,7 +253,7 @@ class _FiltersPageState extends State<FiltersPage> {
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
           child: Text(
-            "Popular filters",
+            S.of(context).popularFilters,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -349,7 +344,7 @@ class _FiltersPageState extends State<FiltersPage> {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            "Price (for 1 night)",
+            S.of(context).priceFor1Night,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -436,19 +431,16 @@ class _FiltersPageState extends State<FiltersPage> {
                 child: Container(
                   width: AppBar().preferredSize.height - 8,
                   height: AppBar().preferredSize.height - 8,
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.close),
-                      ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(32.0),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.close),
                     ),
                   ),
                 ),
@@ -457,7 +449,7 @@ class _FiltersPageState extends State<FiltersPage> {
             Padding(
               padding: const EdgeInsets.only(top: 4, left: 24, bottom: 16),
               child: Text(
-                "Filters",
+                S.of(context).filters,
                 style: new TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,

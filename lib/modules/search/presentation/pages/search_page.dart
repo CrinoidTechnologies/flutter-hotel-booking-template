@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../hotel/domain/entities/hotel_entity.dart';
 import '../widgets/search_types_widget.dart';
@@ -94,7 +95,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                           decoration: new InputDecoration(
                                             errorText: null,
                                             border: InputBorder.none,
-                                            hintText: "Where are you going?",
+                                            hintText: S.of(context).whereAreYouGoing,
                                             hintStyle: TextStyle(color: AppTheme.getTheme().disabledColor),
                                           ),
                                         ),
@@ -113,7 +114,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                             children: <Widget>[
                               Expanded(
                                 child: Text(
-                                  "Last searches",
+                                  S.of(context).lastSearches,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16,
@@ -121,26 +122,23 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                              Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                                  onTap: () {},
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                          'Clear all',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14,
-                                            color: AppTheme.getTheme().primaryColor,
-                                          ),
+                              InkWell(
+                                borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                onTap: () {},
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        S.of(context).clearAll,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                          color: AppTheme.getTheme().primaryColor,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               )
@@ -216,19 +214,16 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.close),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.close),
                 ),
               ),
             ),
@@ -237,7 +232,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Search",
+            S.of(context).search,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

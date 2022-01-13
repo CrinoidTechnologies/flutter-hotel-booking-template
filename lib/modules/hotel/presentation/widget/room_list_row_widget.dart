@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/hotel/domain/entities/hotel_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -97,24 +98,21 @@ class _RoomListRowWidgetState extends State<RoomListRowWidget> {
                                 ),
                               ],
                             ),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(24.0)),
-                                highlightColor: Colors.transparent,
-                                onTap: () {},
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16),
-                                  child: Center(
-                                    child: Text(
-                                      "Book now",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.white),
-                                    ),
+                            child: InkWell(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(24.0)),
+                              highlightColor: Colors.transparent,
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 16, right: 16),
+                                child: Center(
+                                  child: Text(
+                                    S.of(context).bookNow,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -137,7 +135,7 @@ class _RoomListRowWidgetState extends State<RoomListRowWidget> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 4),
                             child: Text(
-                              "/per night",
+                              S.of(context).perNight,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: ColorHelper
@@ -172,7 +170,7 @@ class _RoomListRowWidgetState extends State<RoomListRowWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    'More Details',
+                                    S.of(context).moreDetails,
                                     style: TextStyle(
                                       // color: AppTheme.getTheme().backgroundColor,
                                       fontWeight: FontWeight.w600,

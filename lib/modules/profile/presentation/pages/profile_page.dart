@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../settings/domain/entities/setting_entity.dart';
 import '../../../password_recovery/presentation/pages/change_password_page.dart';
@@ -156,14 +157,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Amanda",
+                    S.of(context).amanda,
                     style: new TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
-                    "View and edit profile",
+                    S.of(context).viewAndEditProfile,
                     style: new TextStyle(
                       fontSize: 18,
                       color: AppTheme.getTheme().disabledColor,

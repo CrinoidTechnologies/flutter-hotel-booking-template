@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/entity/slider_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../app/ui/appTheme.dart';
@@ -93,25 +94,22 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     ),
                   ],
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    },
-                    child: Center(
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: Colors.white),
-                      ),
+                child: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: Center(
+                    child: Text(
+                      S.of(context).login,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Colors.white),
                     ),
                   ),
                 ),
@@ -133,23 +131,20 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     ),
                   ],
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUpPage()),
-                      );
-                    },
-                    child: Center(
-                      child: Text(
-                        "create account",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 16),
-                      ),
+                child: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
+                  },
+                  child: Center(
+                    child: Text(
+                      S.of(context).createAccount,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500, fontSize: 16),
                     ),
                   ),
                 ),

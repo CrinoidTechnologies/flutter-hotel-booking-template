@@ -45,41 +45,38 @@ class ExploreItemHeaderWidget extends StatelessWidget {
                     ),
                   ),
                   isLeftButton
-                      ? Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(4.0)),
-                            onTap: () {
-                              click!();
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    subTxt,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                      color: AppTheme.getTheme().primaryColor,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 38,
-                                    width: 26,
-                                    child: Icon(
-                                      Icons.arrow_forward,
-                                      size: 18,
-                                      color: AppTheme.getTheme().primaryColor,
-                                    ),
-                                  ),
-                                ],
+                      ? InkWell(
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(4.0)),
+                        onTap: () {
+                          click!();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                subTxt,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                  color: AppTheme.getTheme().primaryColor,
+                                ),
                               ),
-                            ),
+                              SizedBox(
+                                height: 38,
+                                width: 26,
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 18,
+                                  color: AppTheme.getTheme().primaryColor,
+                                ),
+                              ),
+                            ],
                           ),
-                        )
+                        ),
+                      )
                       : SizedBox()
                 ],
               ),

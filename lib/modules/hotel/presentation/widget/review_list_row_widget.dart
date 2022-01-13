@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import 'package:motel/modules/hotel/domain/entities/hotel_entity.dart';
 
@@ -110,35 +111,32 @@ class ReviewListRowWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'Reply',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: ColorHelper.primaryColor,
-                                  ),
+                      InkWell(
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                S.of(context).reply,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: ColorHelper.primaryColor,
                                 ),
-                                SizedBox(
-                                  height: 38,
-                                  width: 26,
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    size: 14,
-                                    color: ColorHelper.primaryColor,
-                                  ),
+                              ),
+                              SizedBox(
+                                height: 38,
+                                width: 26,
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 14,
+                                  color: ColorHelper.primaryColor,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

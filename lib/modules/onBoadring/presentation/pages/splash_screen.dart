@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import 'introduction_screen.dart';
 import '../../../../app/ui/appTheme.dart';
 
@@ -59,7 +60,7 @@ class _SplashPageState extends State<SplashPage> {
                   height: 16,
                 ),
                 Text(
-                  "Motel",
+                  S.of(context).motel,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
@@ -70,7 +71,7 @@ class _SplashPageState extends State<SplashPage> {
                   height: 8,
                 ),
                 Text(
-                  "Best hotel deals for your holiday",
+                  S.of(context).bestHotelDealsForYourHoliday,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 14,
@@ -96,26 +97,23 @@ class _SplashPageState extends State<SplashPage> {
                         ),
                       ],
                     ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                        highlightColor: Colors.transparent,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => IntroductionPage()),
-                          );
-                        },
-                        child: Center(
-                          child: Text(
-                            "Get started",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white),
-                          ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => IntroductionPage()),
+                        );
+                      },
+                      child: Center(
+                        child: Text(
+                          S.of(context).getStarted,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Colors.white),
                         ),
                       ),
                     ),
@@ -126,7 +124,7 @@ class _SplashPageState extends State<SplashPage> {
                       bottom: 24.0 + MediaQuery.of(context).padding.bottom,
                       top: 16),
                   child: Text(
-                    "Already have account? Log in",
+                    S.of(context).alreadyHaveAccountLogIn,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 14,

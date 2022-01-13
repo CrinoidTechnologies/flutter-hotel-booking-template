@@ -31,36 +31,33 @@ class RoundCornerButtonWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.all(Radius.circular(24.0)),
-          highlightColor: Colors.transparent,
-          onTap: () {
-            if (onTap != null) onTap!();
-          },
-          child: Center(
-            child: Padding(
-              padding: padding ?? EdgeInsets.all(0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  if (prefixIcon != null) ...[
-                    prefixIcon!,
-                    SizedBox(
-                      width: 4,
-                    )
-                  ],
-                  Text(
-                    title ?? '',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Colors.white),
-                  ),
+      child: InkWell(
+        borderRadius: BorderRadius.all(Radius.circular(24.0)),
+        highlightColor: Colors.transparent,
+        onTap: () {
+          if (onTap != null) onTap!();
+        },
+        child: Center(
+          child: Padding(
+            padding: padding ?? EdgeInsets.all(0.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                if (prefixIcon != null) ...[
+                  prefixIcon!,
+                  SizedBox(
+                    width: 4,
+                  )
                 ],
-              ),
+                Text(
+                  title ?? '',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white),
+                ),
+              ],
             ),
           ),
         ),

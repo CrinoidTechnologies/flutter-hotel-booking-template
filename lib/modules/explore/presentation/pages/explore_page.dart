@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
 import 'package:motel/modules/explore/presentation/widget/explore_item_header_widget.dart';
 import 'package:motel/modules/explore/presentation/widget/explore_slider_widget.dart';
@@ -92,7 +93,7 @@ class _ExplorePageState extends State<ExplorePage>
                         );
                         if (index == 0) {
                           return ExploreItemHeaderWidget(
-                            titleTxt: 'Popular Destinations',
+                            titleTxt: S.of(context).popularDestinations,
                             subTxt: '',
                             animation: animation,
                             animationController: widget.animationController,
@@ -107,8 +108,8 @@ class _ExplorePageState extends State<ExplorePage>
                           );
                         } else if (index == 2) {
                           return ExploreItemHeaderWidget(
-                            titleTxt: 'Best Deals',
-                            subTxt: 'View all',
+                            titleTxt: S.of(context).bestDeals,
+                            subTxt: S.of(context).viewAll,
                             animation: animation,
                             isLeftButton: true,
                             animationController: widget.animationController,
@@ -180,7 +181,7 @@ class _ExplorePageState extends State<ExplorePage>
                 child: Opacity(
                   opacity: opecity,
                   child: RoundCornerButtonWidget(
-                    title: 'View Hotels',
+                    title: S.of(context).viewHotels,
                     bgColor: ColorHelper.primaryColor,
                     onTap: () {
                       if (opecity != 0) {
@@ -326,7 +327,7 @@ class _ExplorePageState extends State<ExplorePage>
                         decoration: new InputDecoration(
                           errorText: null,
                           border: InputBorder.none,
-                          hintText: "Where are you going?",
+                          hintText: S.of(context).whereAreYouGoing,
                           hintStyle: TextStyle(
                               color: AppTheme.getTheme().disabledColor),
                         ),

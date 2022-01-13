@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/hotel_entity.dart';
@@ -48,7 +49,7 @@ class HotelRatingWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Overall Rating',
+                          S.of(context).overallRating,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -72,19 +73,19 @@ class HotelRatingWidget extends StatelessWidget {
             SizedBox(
               height: 4,
             ),
-            getBarUI('Room', 95.0),
+            getBarUI(S.of(context).room, 95.0),
             SizedBox(
               height: 4,
             ),
-            getBarUI('Service', 80.0),
+            getBarUI(S.of(context).service, 80.0),
             SizedBox(
               height: 4,
             ),
-            getBarUI('Location', 65.0),
+            getBarUI(S.of(context).location, 65.0),
             SizedBox(
               height: 4,
             ),
-            getBarUI('Price', 85),
+            getBarUI(S.of(context).price, 85),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/setting_entity.dart';
 
@@ -101,19 +102,16 @@ class _CurrencyListPageState extends State<CurrencyListPage> {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.arrow_back),
                 ),
               ),
             ),
@@ -122,7 +120,7 @@ class _CurrencyListPageState extends State<CurrencyListPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Currency",
+            S.of(context).currency,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

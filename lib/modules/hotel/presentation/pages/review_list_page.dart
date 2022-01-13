@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/hotel/presentation/widget/review_list_row_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/hotel_entity.dart';
@@ -78,19 +79,16 @@ class _ReviewListPageState extends State<ReviewListPage>
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.close),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.close),
                 ),
               ),
             ),
@@ -99,7 +97,7 @@ class _ReviewListPageState extends State<ReviewListPage>
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Reviews (20)",
+            S.of(context).reviews20,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

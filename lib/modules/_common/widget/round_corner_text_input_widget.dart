@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motel/app/ui/appTheme.dart';
+import 'package:motel/app/ui/color_helper.dart';
 
 class RoundCornerTextInputWidget extends StatelessWidget {
   const RoundCornerTextInputWidget(
@@ -13,14 +13,14 @@ class RoundCornerTextInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.getTheme().backgroundColor,
+        color: ColorHelper.bgColor,
         borderRadius: BorderRadius.all(Radius.circular(38)),
         // border: Border.all(
         //   color: HexColor("#757575").withOpacity(0.6),
         // ),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: AppTheme.getTheme().dividerColor,
+            color: ColorHelper.dividerColor,
             blurRadius: 8,
             offset: Offset(4, 4),
           ),
@@ -41,12 +41,12 @@ class RoundCornerTextInputWidget extends StatelessWidget {
                 fontSize: 16,
                 // color: AppTheme.dark_grey,
               ),
-              cursorColor: AppTheme.getTheme().primaryColor,
+              cursorColor: ColorHelper.primaryColor,
               decoration: new InputDecoration(
                 errorText: null,
                 border: InputBorder.none,
                 hintText: hintText ?? '',
-                hintStyle: TextStyle(color: AppTheme.getTheme().disabledColor),
+                hintStyle: TextStyle(color: ColorHelper.disabledColor),
               ),
             ),
           ),

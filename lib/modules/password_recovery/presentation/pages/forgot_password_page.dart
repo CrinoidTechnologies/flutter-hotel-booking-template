@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -36,7 +37,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              "Enter your email to receive an email to\nreset your password",
+                              S.of(context).enterYourEmailToReceiveAnEmailTonresetYourPassword,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 14,
@@ -79,7 +80,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               decoration: new InputDecoration(
                                 errorText: null,
                                 border: InputBorder.none,
-                                hintText: "Your Email",
+                                hintText: S.of(context).yourEmail,
                                 hintStyle: TextStyle(color: AppTheme.getTheme().disabledColor),
                               ),
                             ),),),
@@ -101,19 +102,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               ),
                             ],
                           ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                              highlightColor: Colors.transparent,
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Center(
-                                child: Text(
-                                  "Send",
-                                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white),
-                                ),
+                          child: InkWell(
+                            borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                            highlightColor: Colors.transparent,
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Center(
+                              child: Text(
+                                S.of(context).send,
+                                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.white),
                               ),
                             ),
                           ),
@@ -142,19 +140,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.arrow_back),
                 ),
               ),
             ),
@@ -163,7 +158,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Forgot Password",
+            S.of(context).forgotPassword,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

@@ -489,7 +489,7 @@ class _HotelListLandingPageState extends State<HotelListLandingPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Number of Rooms",
+                          S.of(context).numberOfRooms,
                           style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: 16,
@@ -558,7 +558,7 @@ class _HotelListLandingPageState extends State<HotelListLandingPage>
                     cursorColor: AppTheme.getTheme().primaryColor,
                     decoration: new InputDecoration(
                       border: InputBorder.none,
-                      hintText: "London...",
+                      hintText: S.of(context).london,
                     ),
                   ),
                 ),
@@ -669,7 +669,7 @@ class _HotelListLandingPageState extends State<HotelListLandingPage>
                       child: Row(
                         children: <Widget>[
                           Text(
-                            "Filtter",
+                            S.of(context).filter,
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: 16,
@@ -762,7 +762,7 @@ class _HotelListLandingPageState extends State<HotelListLandingPage>
             Expanded(
               child: Center(
                 child: Text(
-                  "Explore",
+                  S.of(context).explore,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
@@ -777,35 +777,29 @@ class _HotelListLandingPageState extends State<HotelListLandingPage>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.favorite_border),
-                      ),
+                  InkWell(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(32.0),
+                    ),
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.favorite_border),
                     ),
                   ),
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () {
-                        setState(() {
-                          isMap = !isMap;
-                        });
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                            isMap ? Icons.sort : FontAwesomeIcons.mapMarkedAlt),
-                      ),
+                  InkWell(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(32.0),
+                    ),
+                    onTap: () {
+                      setState(() {
+                        isMap = !isMap;
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                          isMap ? Icons.sort : FontAwesomeIcons.mapMarkedAlt),
                     ),
                   ),
                 ],

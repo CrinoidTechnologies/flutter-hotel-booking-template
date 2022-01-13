@@ -79,31 +79,28 @@ class _SearchTypesState extends State<SearchTypes> with TickerProviderStateMixin
                                 ),
                               ),
                             ),
-                            Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius: BorderRadius.all(Radius.circular(80.0)),
-                                highlightColor: Colors.transparent,
-                                splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.4),
-                                onTap: () {
-                                  setState(() {
-                                    hotelTypeList[index].isSelected = !hotelTypeList[index].isSelected;
-                                  });
-                                },
-                                child: Opacity(
-                                  opacity: hotelTypeList[index].isSelected ? 1.0 : 0.0,
-                                  child: Container(
-                                    width: 80,
-                                    height: 80,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppTheme.getTheme().primaryColor.withOpacity(0.4),
-                                    ),
-                                    child: Center(
-                                      child: Icon(
-                                        FontAwesomeIcons.check,
-                                        color: AppTheme.getTheme().backgroundColor,
-                                      ),
+                            InkWell(
+                              borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                              highlightColor: Colors.transparent,
+                              splashColor: AppTheme.getTheme().primaryColor.withOpacity(0.4),
+                              onTap: () {
+                                setState(() {
+                                  hotelTypeList[index].isSelected = !hotelTypeList[index].isSelected;
+                                });
+                              },
+                              child: Opacity(
+                                opacity: hotelTypeList[index].isSelected ? 1.0 : 0.0,
+                                child: Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppTheme.getTheme().primaryColor.withOpacity(0.4),
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.check,
+                                      color: AppTheme.getTheme().backgroundColor,
                                     ),
                                   ),
                                 ),

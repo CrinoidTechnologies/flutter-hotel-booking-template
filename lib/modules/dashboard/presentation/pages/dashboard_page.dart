@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/selectable_title_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../explore/presentation/pages/explore_page.dart';
@@ -103,7 +104,7 @@ class _DashboardPageState extends State<DashboardPage>
             children: <Widget>[
               Expanded(
                 child: SelectableTitleWidget(
-                  title: 'Explore',
+                  title: S.of(context).explore,
                   showRoundedCornerRipple: false,
                   drawable: Icon(FontAwesomeIcons.search),
                   isSelected: tabType == BottomBarType.Explore,
@@ -114,7 +115,7 @@ class _DashboardPageState extends State<DashboardPage>
               ),
               Expanded(
                 child: SelectableTitleWidget(
-                  title: 'Trips',
+                  title: S.of(context).trips,
                   showRoundedCornerRipple: false,
                   drawable: Icon(FontAwesomeIcons.heart),
                   isSelected: tabType == BottomBarType.Trips,
@@ -125,7 +126,7 @@ class _DashboardPageState extends State<DashboardPage>
               ),
               Expanded(
                 child: SelectableTitleWidget(
-                  title: 'Profile',
+                  title: S.of(context).profile,
                   showRoundedCornerRipple: false,
                   drawable: Icon(FontAwesomeIcons.user),
                   isSelected: tabType == BottomBarType.Profile,

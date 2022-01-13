@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/appTheme.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/hotel/domain/entities/hotel_entity.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 
@@ -171,7 +172,7 @@ class HotelRowTwoWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4),
                   child: Text(
-                    "/per night",
+                    S.of(context).perNight,
                     style: TextStyle(
                         fontSize: 14, color: Colors.grey.withOpacity(0.8)),
                   ),

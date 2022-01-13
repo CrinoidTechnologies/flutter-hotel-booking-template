@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 
 class RoomRangeSelectionWidget extends StatefulWidget {
@@ -129,7 +130,7 @@ class _RoomRangeSelectionWidgetState extends State<RoomRangeSelectionWidget>
                                     },
                                     child: Center(
                                       child: Text(
-                                        "Apply",
+                                        S.of(context).apply,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18,

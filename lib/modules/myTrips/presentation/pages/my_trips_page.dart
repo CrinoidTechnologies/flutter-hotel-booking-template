@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/selectable_title_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import 'favorite_trips_page.dart';
@@ -112,7 +113,7 @@ class _MyTripsPageState extends State<MyTripsPage>
               children: <Widget>[
                 Expanded(
                   child: SelectableTitleWidget(
-                    title: 'Upcoming',
+                    title: S.of(context).upcoming,
                     isSelected: tabType == TopBarType.Upcomming,
                     onTap: () {
                       tabClick(TopBarType.Upcomming);
@@ -121,7 +122,7 @@ class _MyTripsPageState extends State<MyTripsPage>
                 ),
                 Expanded(
                   child: SelectableTitleWidget(
-                    title: 'Finished',
+                    title: S.of(context).finished,
                     isSelected: tabType == TopBarType.Finished,
                     onTap: () {
                       tabClick(TopBarType.Finished);
@@ -130,7 +131,7 @@ class _MyTripsPageState extends State<MyTripsPage>
                 ),
                 Expanded(
                   child: SelectableTitleWidget(
-                    title: 'Favorites',
+                    title: S.of(context).favorites,
                     isSelected: tabType == TopBarType.Favorites,
                     onTap: () {
                       tabClick(TopBarType.Favorites);
@@ -156,7 +157,7 @@ class _MyTripsPageState extends State<MyTripsPage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "My Trips",
+            S.of(context).myTrips,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

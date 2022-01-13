@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import 'package:motel/modules/hotel/domain/entities/hotel_entity.dart';
 
@@ -123,7 +124,7 @@ class HotelMapViewRowWidget extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        "/per night",
+                                        S.of(context).perNight,
                                         style: TextStyle(
                                             fontSize: 14,
                                             color:
@@ -140,15 +141,12 @@ class HotelMapViewRowWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: ColorHelper.primaryColor.withOpacity(0.1),
-                    onTap: () {
-                      callback!();
-                    },
-                  ),
+                InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: ColorHelper.primaryColor.withOpacity(0.1),
+                  onTap: () {
+                    callback!();
+                  },
                 ),
               ],
             ),

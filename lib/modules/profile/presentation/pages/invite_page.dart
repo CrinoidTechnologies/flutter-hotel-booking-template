@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel/generated/l10n.dart';
 import '../../../../app/ui/appTheme.dart';
 
 class InvitePage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _InvitePageState extends State<InvitePage> {
                   Container(
                     padding: EdgeInsets.only(top: 8),
                     child: Text(
-                      'Invite Your Friends',
+                      S.of(context).inviteYourFriends,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -35,7 +36,7 @@ class _InvitePageState extends State<InvitePage> {
                   Container(
                     padding: EdgeInsets.only(top: 16),
                     child: Text(
-                      "Are you one of those who makes everything\n at the last moment?",
+                      S.of(context).areYouOneOfThoseWhoMakesEverythingnAtThe,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
@@ -56,32 +57,29 @@ class _InvitePageState extends State<InvitePage> {
                               BoxShadow(color: AppTheme.getTheme().dividerColor, offset: Offset(4, 4), blurRadius: 8.0),
                             ],
                           ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.share,
-                                      color: Colors.white,
-                                      size: 22,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Text(
-                                        'Share',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
-                                        ),
+                          child: InkWell(
+                            onTap: () {},
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.share,
+                                    color: Colors.white,
+                                    size: 22,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Text(
+                                      S.of(context).share,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -114,19 +112,16 @@ class _InvitePageState extends State<InvitePage> {
         child: Container(
           width: AppBar().preferredSize.height - 8,
           height: AppBar().preferredSize.height - 8,
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.all(
-                Radius.circular(32.0),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.arrow_back),
-              ),
+          child: InkWell(
+            borderRadius: BorderRadius.all(
+              Radius.circular(32.0),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.arrow_back),
             ),
           ),
         ),

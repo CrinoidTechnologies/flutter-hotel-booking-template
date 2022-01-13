@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/round_corner_text_input_widget.dart';
 import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
 import '../../../../app/ui/appTheme.dart';
@@ -65,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "or log in with email",
+                          S.of(context).orLogInWithEmail,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
@@ -78,34 +79,34 @@ class _SignUpPageState extends State<SignUpPage> {
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 16),
                         child: RoundCornerTextInputWidget(
-                          hintText: 'First Name',
+                          hintText: S.of(context).firstName,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 16),
                         child: RoundCornerTextInputWidget(
-                          hintText: 'Last Name',
+                          hintText: S.of(context).lastName,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 24, right: 24),
                         child: RoundCornerTextInputWidget(
-                          hintText: 'Your Email',
+                          hintText: S.of(context).yourEmail,
                         ),
                       ),
                       Padding(
                         padding:
                             const EdgeInsets.only(left: 24, right: 24, top: 16),
                         child: RoundCornerTextInputWidget(
-                          hintText: 'Password',
+                          hintText: S.of(context).password,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 8, top: 24),
                         child: RoundCornerButtonWidget(
-                          title: 'Sign up',
+                          title: S.of(context).signUp,
                           bgColor: AppTheme.getTheme().primaryColor,
                           onTap: () {
                             Navigator.pushNamedAndRemoveUntil(
@@ -118,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "By signing up, you agreed with our terms of\nServices and privacy Policy",
+                          S.of(context).bySigningUpYouAgreedWithOurTermsOfnservicesAnd,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
@@ -132,7 +133,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "Already have account?.",
+                            S.of(context).alreadyHaveAccount,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 14,
@@ -152,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "Log in",
+                                S.of(context).logIn,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -180,13 +181,13 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget getFTButton({bool isFacebook: true}) {
     return isFacebook
         ? RoundCornerButtonWidget(
-            title: 'Facebook',
+            title: S.of(context).facebook,
             bgColor: ColorHelper.facebookColor,
             prefixIcon:
                 Icon(FontAwesomeIcons.facebookF, size: 20, color: Colors.white),
           )
         : RoundCornerButtonWidget(
-            title: 'Twitter',
+            title: S.of(context).twitter,
             bgColor: ColorHelper.twitterColor,
             prefixIcon:
                 Icon(FontAwesomeIcons.twitter, size: 20, color: Colors.white),
@@ -205,19 +206,16 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.arrow_back),
                 ),
               ),
             ),
@@ -226,7 +224,7 @@ class _SignUpPageState extends State<SignUpPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Sign Up",
+            S.of(context).signUp,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/round_corner_text_input_widget.dart';
 import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
 import '../../../../app/ui/appTheme.dart';
@@ -77,14 +78,14 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 24, right: 24),
                         child: RoundCornerTextInputWidget(
-                          hintText: "Your Email",
+                          hintText: S.of(context).yourEmail,
                         ),
                       ),
                       Padding(
                         padding:
                             const EdgeInsets.only(left: 24, right: 24, top: 16),
                         child: RoundCornerTextInputWidget(
-                          hintText: "Password",
+                          hintText: S.of(context).password,
                         ),
                       ),
                       Padding(
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "Forgot your password?",
+                                  S.of(context).forgotYourPassword,
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -124,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 8, top: 8),
                         child: RoundCornerButtonWidget(
-                          title: 'Login',
+                          title: S.of(context).login,
                           bgColor: ColorHelper.primaryColor,
                           onTap: () {
                             Navigator.pushNamedAndRemoveUntil(
@@ -148,13 +149,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget getFTButton({bool isFacebook: true}) {
     return isFacebook
         ? RoundCornerButtonWidget(
-            title: 'Facebook',
+            title: S.of(context).facebook,
             bgColor: ColorHelper.facebookColor,
             prefixIcon:
                 Icon(FontAwesomeIcons.facebookF, size: 20, color: Colors.white),
           )
         : RoundCornerButtonWidget(
-            title: 'Twitter',
+            title: S.of(context).twitter,
             bgColor: ColorHelper.twitterColor,
             prefixIcon:
                 Icon(FontAwesomeIcons.twitter, size: 20, color: Colors.white),
@@ -173,19 +174,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
-                  ),
+              child: InkWell(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.arrow_back),
                 ),
               ),
             ),
@@ -194,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 24),
           child: Text(
-            "Log in",
+            S.of(context).logIn,
             style: new TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
