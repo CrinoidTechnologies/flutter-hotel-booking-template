@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
+import 'package:motel/modules/hotel/presentation/widget/review_list_row_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/hotel_entity.dart';
 
@@ -52,7 +52,7 @@ class _ReviewListPageState extends State<ReviewListPage>
                         curve: Interval((1 / count) * index, 1.0,
                             curve: Curves.fastOutSlowIn)));
                 animationController!.forward();
-                return ReviewsView(
+                return ReviewListRowWidget(
                   callback: () {},
                   reviewsList: reviewsList[index],
                   animation: animation,
@@ -107,160 +107,6 @@ class _ReviewListPageState extends State<ReviewListPage>
           ),
         ),
       ],
-    );
-  }
-}
-
-class ReviewsView extends StatelessWidget {
-  final VoidCallback? callback;
-  final HotelEntity? reviewsList;
-  final AnimationController? animationController;
-  final Animation? animation;
-
-  const ReviewsView({
-    Key? key,
-    this.reviewsList,
-    this.animationController,
-    this.animation,
-    this.callback,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animationController!,
-      builder: (BuildContext context, Widget? child) {
-        return FadeTransition(
-          opacity: animation as Animation<double>,
-          child: new Transform(
-            transform: new Matrix4.translationValues(
-                0.0, 40 * (1.0 - animation!.value), 0.0),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 48,
-                          decoration: BoxDecoration(
-                            color: AppTheme.getTheme().primaryColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0)),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: AppTheme.getTheme().dividerColor,
-                                blurRadius: 8,
-                                offset: Offset(4, 4),
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0)),
-                            child: AspectRatio(
-                              aspectRatio: 1,
-                              child: Image.asset(
-                                reviewsList!.imagePath,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            reviewsList!.titleTxt,
-                            style: new TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            reviewsList!.dateTxt,
-                            style: new TextStyle(
-                              fontWeight: FontWeight.w100,
-                              color: AppTheme.getTheme().disabledColor,
-                            ),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                "(${reviewsList!.rating})",
-                                style: new TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                ),
-                              ),
-                              RatingBarWidget(
-                                rating: reviewsList!.rating / 2,
-                                size: 16,
-                                activeColor: AppTheme.getTheme().primaryColor,
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      reviewsList!.subTxt,
-                      style: new TextStyle(
-                        fontWeight: FontWeight.w100,
-                        color: AppTheme.getTheme().disabledColor,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'Reply',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 38,
-                                  width: 26,
-                                  child: Icon(
-                                    Icons.arrow_forward,
-                                    size: 14,
-                                    color: AppTheme.getTheme().primaryColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    height: 1,
-                  )
-                ],
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

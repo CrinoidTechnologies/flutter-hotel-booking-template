@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../app/ui/appTheme.dart';
 
-class RoomImagesWidget extends StatefulWidget {
-  @override
-  _RoomImagesWidgetState createState() => _RoomImagesWidgetState();
-}
+class RoomImagesWidget extends StatelessWidget {
+  RoomImagesWidget({Key? key}) : super(key: key);
 
-class _RoomImagesWidgetState extends State<RoomImagesWidget> {
   List<String> photosList = [
     "assets/images/hotel_room_1.jpg",
     "assets/images/hotel_room_2.jpg",

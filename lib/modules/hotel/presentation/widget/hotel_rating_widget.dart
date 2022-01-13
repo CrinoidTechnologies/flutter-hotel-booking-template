@@ -3,10 +3,10 @@ import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/hotel_entity.dart';
 
-class RatingViewWidget extends StatelessWidget {
+class HotelRatingWidget extends StatelessWidget {
   final HotelEntity? hotelData;
 
-  const RatingViewWidget({Key? key, this.hotelData}) : super(key: key);
+  const HotelRatingWidget({Key? key, this.hotelData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

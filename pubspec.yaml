@@ -27,9 +27,12 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   smooth_page_indicator: ^1.0.0+2
   intl: ^0.17.0
+  intl_utils: ^2.6.0
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
 
@@ -79,3 +82,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
+  main_locale: en_US

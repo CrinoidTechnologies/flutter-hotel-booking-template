@@ -16,4 +16,8 @@ class ColorHelper {
   static Color get disabledColor => AppTheme.getTheme().disabledColor;
 
   static Color get transparentColor => Colors.transparent;
+
+  static Color get dividerColor => AppTheme.getTheme().dividerColor;
+
+  static Color get bgColor => AppTheme.getTheme().backgroundColor;
 }

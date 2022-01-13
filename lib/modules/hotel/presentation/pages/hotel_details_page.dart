@@ -3,11 +3,14 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motel/app/ui/color_helper.dart';
 import 'package:motel/modules/_common/widget/rating_bar_widget.dart';
+import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
+import 'package:motel/modules/hotel/presentation/widget/review_list_row_widget.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../domain/entities/hotel_entity.dart';
 import '../widget/room_images_widget.dart';
-import '../widget/rating_view_widget.dart';
+import '../widget/hotel_rating_widget.dart';
 import 'review_list_page.dart';
 import 'room_list_page.dart';
 
@@ -144,7 +147,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                     top: 8,
                     bottom: 16,
                   ),
-                  child: RatingViewWidget(hotelData: widget.hotelData),
+                  child: HotelRatingWidget(hotelData: widget.hotelData),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 24, right: 24),
@@ -252,12 +255,12 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                     ],
                   ),
                 ),
-                ReviewsView(
+                ReviewListRowWidget(
                   reviewsList: HotelEntity.reviewsList[0],
                   animation: animationController,
                   animationController: animationController,
                 ),
-                ReviewsView(
+                ReviewListRowWidget(
                   reviewsList: HotelEntity.reviewsList[1],
                   animation: animationController,
                   animationController: animationController,
@@ -297,47 +300,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 16, right: 16, bottom: 16, top: 16),
-                  child: Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppTheme.getTheme().primaryColor,
-                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                          color: AppTheme.getTheme().dividerColor,
-                          blurRadius: 8,
-                          offset: Offset(4, 4),
-                        ),
-                      ],
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                        highlightColor: Colors.transparent,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RoomListPage(
-                                hotelName: widget.hotelData!.titleTxt,
-                              ),
-                              fullscreenDialog: true,
-                            ),
-                          );
-                        },
-                        child: Center(
-                          child: Text(
-                            "Book now",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: getBookNowButton(),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).padding.bottom,
@@ -517,53 +480,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
                                           right: 16,
                                           bottom: 16,
                                           top: 16),
-                                      child: Container(
-                                        height: 48,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              AppTheme.getTheme().primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(24.0)),
-                                          boxShadow: <BoxShadow>[
-                                            BoxShadow(
-                                              color: AppTheme.getTheme()
-                                                  .dividerColor,
-                                              blurRadius: 8,
-                                              offset: Offset(4, 4),
-                                            ),
-                                          ],
-                                        ),
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          child: InkWell(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(24.0)),
-                                            highlightColor: Colors.transparent,
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      RoomListPage(
-                                                    hotelName:
-                                                        hotelData.titleTxt,
-                                                  ),
-                                                  fullscreenDialog: true,
-                                                ),
-                                              );
-                                            },
-                                            child: Center(
-                                              child: Text(
-                                                "Book now",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 16,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                      child: getBookNowButton(),
                                     ),
                                   ],
                                 ),
@@ -765,4 +682,20 @@ class _HotelDetailsPageState extends State<HotelDetailsPage>
       ],
     );
   }
+
+  Widget getBookNowButton() => RoundCornerButtonWidget(
+        title: 'Book now',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RoomListPage(
+                hotelName: widget.hotelData!.titleTxt,
+              ),
+              fullscreenDialog: true,
+            ),
+          );
+        },
+        bgColor: ColorHelper.primaryColor,
+      );
 }

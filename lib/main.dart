@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:motel/modules/dashboard/presentation/pages/dashboard_page.dart';
 import 'app/ui/appTheme.dart';
+import 'generated/l10n.dart';
 import 'modules/onBoadring/presentation/pages/splash_screen.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -52,10 +53,8 @@ class _MyAppState extends State<MyApp> {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness:
           AppTheme.isDark ? Brightness.dark : Brightness.light,
-      statusBarBrightness:
-          AppTheme.isDark ? Brightness.light : Brightness.dark,
-      systemNavigationBarColor:
-          AppTheme.isDark ? Colors.white : Colors.black,
+      statusBarBrightness: AppTheme.isDark ? Brightness.light : Brightness.dark,
+      systemNavigationBarColor: AppTheme.isDark ? Colors.white : Colors.black,
       systemNavigationBarDividerColor: Colors.grey,
       systemNavigationBarIconBrightness:
           AppTheme.isDark ? Brightness.dark : Brightness.light,
@@ -64,6 +63,10 @@ class _MyAppState extends State<MyApp> {
       key: key,
       color: AppTheme.getTheme().backgroundColor,
       child: MaterialApp(
+          localizationsDelegates: [
+            S.delegate,
+          ],
+          locale: Locale('en', 'US'),
           navigatorKey: navigatorKey,
           title: 'Motel',
           debugShowCheckedModeBanner: false,
