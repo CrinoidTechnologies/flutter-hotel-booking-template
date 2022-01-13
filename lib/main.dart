@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:motel/modules/dashboard/dashboard_page.dart';
+import 'package:motel/modules/dashboard/presentation/pages/dashboard_page.dart';
 import 'app/ui/appTheme.dart';
-import 'modules/onBoadring/splashScreen.dart';
+import 'modules/onBoadring/presentation/pages/splash_screen.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   var routes = <String, WidgetBuilder>{
-    Routes.SPLASH: (BuildContext context) => SplashScreen(),
+    Routes.SPLASH: (BuildContext context) => SplashPage(),
     Routes.TabScreen: (BuildContext context) => new DashboardPage(),
   };
 }
