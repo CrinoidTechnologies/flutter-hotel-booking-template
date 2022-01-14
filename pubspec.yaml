@@ -30,6 +30,8 @@ dependencies:
   intl_utils: ^2.6.0
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   flutter_localizations:

@@ -4,6 +4,7 @@ import 'package:motel/modules/dashboard/presentation/pages/dashboard_page.dart';
 import 'app/ui/appTheme.dart';
 import 'generated/l10n.dart';
 import 'modules/onBoadring/presentation/pages/splash_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -65,10 +66,13 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
           localizationsDelegates: [
             S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
           locale: Locale('en', 'US'),
           navigatorKey: navigatorKey,
-          title: 'Motel',
+          title: S.of(context).hotel,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.getTheme(),
           routes: routes,

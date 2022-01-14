@@ -31,7 +31,7 @@ class RoundCornerTextInputWidget extends StatelessWidget {
         child: Container(
           height: 48,
           child: Center(
-            child: TextFormField(
+            child: TextFormField(key: key,
               initialValue: initialValue ?? '',
               maxLines: 1,
               onChanged: (String txt) {

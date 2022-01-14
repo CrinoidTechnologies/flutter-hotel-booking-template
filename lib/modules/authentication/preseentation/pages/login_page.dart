@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:motel/app/ui/color_helper.dart';
+import 'package:motel/app/validators/login_validator.dart';
 import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/widget/round_corner_text_input_widget.dart';
 import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
+import 'package:motel/modules/authentication/domain/entities/login_entity.dart';
 import '../../../../app/ui/appTheme.dart';
 import '../../../password_recovery/presentation/pages/forgot_password_page.dart';
 import '../../../../main.dart';
@@ -14,6 +16,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late LoginEntity _loginEntity;
+  bool _loginSuccessful = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loginEntity = LoginEntity();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "or log in with email",
+                          S.of(context).orLogInWithEmail,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
@@ -78,14 +89,22 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 24, right: 24),
                         child: RoundCornerTextInputWidget(
+                          key: Key('txt_email'),
                           hintText: S.of(context).yourEmail,
+                          onChange: (v) {
+                            _loginEntity.email = v;
+                          },
                         ),
                       ),
                       Padding(
                         padding:
                             const EdgeInsets.only(left: 24, right: 24, top: 16),
                         child: RoundCornerTextInputWidget(
+                          key: Key('txt_password'),
                           hintText: S.of(context).password,
+                          onChange: (v) {
+                            _loginEntity.password = v;
+                          },
                         ),
                       ),
                       Padding(
@@ -125,16 +144,32 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 8, top: 8),
                         child: RoundCornerButtonWidget(
+                          key: Key('btn_login'),
                           title: S.of(context).login,
                           bgColor: ColorHelper.primaryColor,
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                Routes.TabScreen,
-                                (Route<dynamic> route) => false);
+                            setState(() {
+                              if (LoginValidator(
+                                          email: _loginEntity.email,
+                                          password: _loginEntity.password)
+                                      .validate() ==
+                                  S.current.validationSuccessful) {
+                                _loginSuccessful = true;
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    Routes.TabScreen,
+                                    (Route<dynamic> route) => false);
+                              } else {
+                                _loginSuccessful = false;
+                              }
+                            });
                           },
                         ),
                       ),
+                      Text(
+                        _loginSuccessful.toString(),
+                        key: Key('txt_login'),
+                      )
                     ],
                   ),
                 ),
@@ -202,4 +237,6 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
+
+  bool get loginSuccessful => _loginSuccessful;
 }

@@ -31,7 +31,7 @@ class RoundCornerButtonWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: InkWell(
+      child: InkWell(key: key,
         borderRadius: BorderRadius.all(Radius.circular(24.0)),
         highlightColor: Colors.transparent,
         onTap: () {

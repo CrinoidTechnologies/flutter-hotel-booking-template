@@ -76,5 +76,14 @@
   "price": "Price",
   "from": "From",
   "to": "To",
-  "reviews20": "Reviews (20)"
+  "reviews20": "Reviews (20)",
+  "validationSuccessful": "Validation successful.",
+  "pleaseEnterEmail": "Please enter email.",
+  "pleaseEnterPassword": "Please enter password.",
+  "pleaseEnterValidEmail": "Please enter valid email.",
+  "passwordMustBeWithIn620Characters": "Password must be with in 6-20 characters.",
+  "pleaseEnterYourFirstName": "Please enter your first name.",
+  "pleaseEnterYourLastName": "Please enter your last name",
+  "passwordMustIncludeOneCharacterOneNumericDigit": "Password must include one character & one numeric digit.",
+  "hotel": "Hotel"
 }
