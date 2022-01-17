@@ -3,11 +3,16 @@ import 'package:motel/app/ui/color_helper.dart';
 
 class RoundCornerTextInputWidget extends StatelessWidget {
   const RoundCornerTextInputWidget(
-      {Key? key, this.onChange, this.hintText, this.initialValue})
+      {Key? key,
+      this.onChange,
+      this.hintText,
+      this.initialValue,
+      this.inputTextKey})
       : super(key: key);
   final ValueChanged<String>? onChange;
   final String? hintText;
   final String? initialValue;
+  final Key? inputTextKey;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,8 @@ class RoundCornerTextInputWidget extends StatelessWidget {
         child: Container(
           height: 48,
           child: Center(
-            child: TextFormField(key: key,
+            child: TextFormField(
+              key: inputTextKey,
               initialValue: initialValue ?? '',
               maxLines: 1,
               onChanged: (String txt) {

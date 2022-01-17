@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:motel/app/validators/login_validator.dart';
 
 void main() {
+
   group('Login validations test cases', () {
     test('Empty email', () {
       expect(LoginValidator(password: '@34ghbsc').validate(),

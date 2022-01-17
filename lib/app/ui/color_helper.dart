@@ -13,6 +13,8 @@ class ColorHelper {
 
   static Color get lightColor => Colors.white;
 
+  static Color get darkColor => Colors.black;
+
   static Color get disabledColor => AppTheme.getTheme().disabledColor;
 
   static Color get transparentColor => Colors.transparent;

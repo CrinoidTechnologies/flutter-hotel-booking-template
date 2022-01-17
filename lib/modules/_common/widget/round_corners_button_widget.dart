@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motel/app/ui/appTheme.dart';
+import 'package:motel/app/ui/color_helper.dart';
 
 class RoundCornerButtonWidget extends StatelessWidget {
   const RoundCornerButtonWidget(
@@ -8,13 +9,17 @@ class RoundCornerButtonWidget extends StatelessWidget {
       this.prefixIcon,
       this.title,
       this.onTap,
-      this.padding})
+      this.padding,
+      this.buttonKey,
+      this.textColor})
       : super(key: key);
   final Color? bgColor;
+  final Color? textColor;
   final Widget? prefixIcon;
   final String? title;
   final VoidCallback? onTap;
   final EdgeInsets? padding;
+  final Key? buttonKey;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,8 @@ class RoundCornerButtonWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: InkWell(key: key,
+      child: InkWell(
+        key: buttonKey,
         borderRadius: BorderRadius.all(Radius.circular(24.0)),
         highlightColor: Colors.transparent,
         onTap: () {
@@ -55,7 +61,7 @@ class RoundCornerButtonWidget extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: Colors.white),
+                      color: textColor ?? ColorHelper.lightColor),
                 ),
               ],
             ),

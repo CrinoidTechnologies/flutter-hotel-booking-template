@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:motel/modules/authentication/preseentation/pages/signup_page.dart';
 import 'package:motel/modules/dashboard/presentation/pages/dashboard_page.dart';
 import 'app/ui/appTheme.dart';
 import 'generated/l10n.dart';
+import 'modules/authentication/preseentation/pages/login_page.dart';
 import 'modules/onBoadring/presentation/pages/splash_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -72,7 +74,7 @@ class _MyAppState extends State<MyApp> {
           ],
           locale: Locale('en', 'US'),
           navigatorKey: navigatorKey,
-          title: S.of(context).hotel,
+          title: 'Hotel',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.getTheme(),
           routes: routes,
@@ -100,11 +102,15 @@ class _MyAppState extends State<MyApp> {
 
   var routes = <String, WidgetBuilder>{
     Routes.SPLASH: (BuildContext context) => SplashPage(),
-    Routes.TabScreen: (BuildContext context) => new DashboardPage(),
+    Routes.TabScreen: (BuildContext context) => DashboardPage(),
+    Routes.LoginPage: (BuildContext context) => LoginPage(),
+    Routes.SignupPage: (BuildContext context) => SignUpPage(),
   };
 }
 
 class Routes {
   static const String SPLASH = "/";
   static const String TabScreen = "/dashboard/dashboard_page";
+  static const String LoginPage = "/login_page";
+  static const String SignupPage = "/signup_page";
 }

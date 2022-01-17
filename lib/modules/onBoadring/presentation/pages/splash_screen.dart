@@ -97,7 +97,7 @@ class _SplashPageState extends State<SplashPage> {
                         ),
                       ],
                     ),
-                    child: InkWell(
+                    child: InkWell(key: Key('txt_get_started'),
                       borderRadius: BorderRadius.all(Radius.circular(24.0)),
                       highlightColor: Colors.transparent,
                       onTap: () {

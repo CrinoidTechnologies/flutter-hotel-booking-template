@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:motel/app/ui/color_helper.dart';
 import 'package:motel/generated/l10n.dart';
 import 'package:motel/modules/_common/entity/slider_entity.dart';
+import 'package:motel/modules/_common/widget/round_corners_button_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../app/ui/appTheme.dart';
+import '../../../../main.dart';
 import '../../../authentication/preseentation/pages/login_page.dart';
 import '../../../authentication/preseentation/pages/signup_page.dart';
 
@@ -79,77 +82,31 @@ class _IntroductionPageState extends State<IntroductionPage> {
               controller: pageController,
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 48, right: 48, bottom: 8, top: 32),
-              child: Container(
-                height: 48,
-                decoration: BoxDecoration(
-                  color: AppTheme.getTheme().primaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: AppTheme.getTheme().dividerColor,
-                      blurRadius: 8,
-                      offset: Offset(4, 4),
-                    ),
-                  ],
-                ),
-                child: InkWell(
-                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                  highlightColor: Colors.transparent,
+                padding: const EdgeInsets.only(
+                    left: 48, right: 48, bottom: 8, top: 32),
+                child: RoundCornerButtonWidget(
+                  buttonKey: Key('btn_login'),
+                  bgColor: ColorHelper.primaryColor,
+                  title: S.of(context).login,
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
+                    Navigator.pushNamed(context, Routes.LoginPage);
                   },
-                  child: Center(
-                    child: Text(
-                      S.of(context).login,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                )),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 48, right: 48, bottom: 32, top: 8),
-              child: Container(
-                height: 48,
-                decoration: BoxDecoration(
-                  color: AppTheme.getTheme().backgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: AppTheme.getTheme().dividerColor,
-                      blurRadius: 8,
-                      offset: Offset(4, 4),
-                    ),
-                  ],
-                ),
-                child: InkWell(
-                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                  highlightColor: Colors.transparent,
+                padding: const EdgeInsets.only(
+                    left: 48, right: 48, bottom: 32, top: 8),
+                child: RoundCornerButtonWidget(
+                  buttonKey: Key('btn_create_acc'),
+                  bgColor: ColorHelper.bgColor,
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                      Routes.SignupPage,
                     );
                   },
-                  child: Center(
-                    child: Text(
-                      S.of(context).createAccount,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500, fontSize: 16),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                  textColor: ColorHelper.darkColor,
+                  title: S.current.createAccount,
+                )),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             )

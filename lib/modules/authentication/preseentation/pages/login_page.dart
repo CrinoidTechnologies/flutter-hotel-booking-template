@@ -17,7 +17,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late LoginEntity _loginEntity;
-  bool _loginSuccessful = true;
+  String _loginStatus = '';
 
   @override
   void initState() {
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 24, right: 24),
                         child: RoundCornerTextInputWidget(
-                          key: Key('txt_email'),
+                          inputTextKey: Key('txt_email'),
                           hintText: S.of(context).yourEmail,
                           onChange: (v) {
                             _loginEntity.email = v;
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding:
                             const EdgeInsets.only(left: 24, right: 24, top: 16),
                         child: RoundCornerTextInputWidget(
-                          key: Key('txt_password'),
+                          inputTextKey: Key('txt_password'),
                           hintText: S.of(context).password,
                           onChange: (v) {
                             _loginEntity.password = v;
@@ -144,31 +144,30 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(
                             left: 24, right: 24, bottom: 8, top: 8),
                         child: RoundCornerButtonWidget(
-                          key: Key('btn_login'),
+                          buttonKey: Key('btn_login'),
                           title: S.of(context).login,
                           bgColor: ColorHelper.primaryColor,
                           onTap: () {
                             setState(() {
-                              if (LoginValidator(
-                                          email: _loginEntity.email,
-                                          password: _loginEntity.password)
-                                      .validate() ==
+                              _loginStatus = LoginValidator(
+                                      email: _loginEntity.email,
+                                      password: _loginEntity.password)
+                                  .validate();
+
+                              if (_loginStatus ==
                                   S.current.validationSuccessful) {
-                                _loginSuccessful = true;
                                 Navigator.pushNamedAndRemoveUntil(
                                     context,
                                     Routes.TabScreen,
                                     (Route<dynamic> route) => false);
-                              } else {
-                                _loginSuccessful = false;
                               }
                             });
                           },
                         ),
                       ),
                       Text(
-                        _loginSuccessful.toString(),
-                        key: Key('txt_login'),
+                        _loginStatus.toString(),
+                        key: Key('txt_error'),
                       )
                     ],
                   ),
@@ -237,6 +236,4 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
-
-  bool get loginSuccessful => _loginSuccessful;
 }
