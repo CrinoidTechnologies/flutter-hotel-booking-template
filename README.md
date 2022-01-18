@@ -26,14 +26,14 @@
 ### Screenshots
 ***
 
-  ![OnBoarding Page](/docs/onboarding.png)
-  ![Intro Page](https://postimg.cc/BtYcFMrQ)
-  ![Login Page](https://postimg.cc/4mYvQpGv)
-  ![Signup Page](https://postimg.cc/4YtzrZmm)
-  ![Explore Page](https://postimg.cc/dkWd8VSS)
-  ![Trips Page](https://postimg.cc/wyxLymFm)
-  ![Profile Page](https://postimg.cc/TyJn39jx)
-  ![Settings Page](https://postimg.cc/cKSQWjnT)
+  ![OnBoarding Page](/screenshots/onboarding.png)
+  ![Intro Page](/screenshots/intro.png)
+  ![Login Page](/screenshots/login.png)
+  ![Signup Page](/screenshots/signup.png)
+  ![Explore Page](/screenshots/explore.png)
+  ![Trips Page](/screenshots/trips.png)
+  ![Profile Page](/screenshots/profile.png)
+  ![Settings Page](/screenshots/settings.png)
 
 
 ### Showcase
@@ -68,6 +68,6 @@
 ### GIFs
 ***
 
-   ![Integration Testing] (https://giphy.com/gifs/NE5rvixPRDPRQ6J56W)
+   ![Integration Testing] (/screenshots/Intigration_testing.mp4)
 
 
