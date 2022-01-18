@@ -84,7 +84,11 @@
 ***
 
    #### Sample for Integration testing of signup module.
-   
+
    ![Integration Testing](/screenshots/integration_test.gif)
+
+   #### Sample for app transition animations.
+
+   ![Transition Animations](/screenshots/transitions.gif)
 
 
