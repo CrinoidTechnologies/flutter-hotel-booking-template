@@ -68,6 +68,6 @@
 ### GIFs
 ***
 
-   ![Integration Testing] (/screenshots/integration_test.gif)
+   ![Integration Testing](/screenshots/integration_test.gif)
 
 
