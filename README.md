@@ -26,7 +26,7 @@
 ### Screenshots
 ***
 
-  ![OnBoarding Page](https://postimg.cc/8sPmsqn0)
+  ![OnBoarding Page](/docs/onboarding.png)
   ![Intro Page](https://postimg.cc/BtYcFMrQ)
   ![Login Page](https://postimg.cc/4mYvQpGv)
   ![Signup Page](https://postimg.cc/4YtzrZmm)
