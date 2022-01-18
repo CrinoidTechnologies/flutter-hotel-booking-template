@@ -7,7 +7,7 @@
 
 ### General Info
 ***
-# Hotel Template
+## Hotel Template
   This is a template project which basically explores list of hotels, rooms, popular destinations and trips. A basic search and room selection interface is also
   implemented in this. A UI interface to view/edit user profile is also implemented. There is a setting page with basic setting options including an
   option to change app theme(Light/Dark) as per your requirement. A basic validations for Signup & Login is also implemented in this.
@@ -26,13 +26,28 @@
 ### Screenshots
 ***
 
+  # OnBoarding Page
   ![OnBoarding Page](/screenshots/onboarding.png)
+
+  # Intro Page
   ![Intro Page](/screenshots/intro.png)
+
+  # Login Page
   ![Login Page](/screenshots/login.png)
+
+  # Signup Page
   ![Signup Page](/screenshots/signup.png)
+
+  # Explore Page
   ![Explore Page](/screenshots/explore.png)
+
+  # Trips Page
   ![Trips Page](/screenshots/trips.png)
+
+  # Profile Page
   ![Profile Page](/screenshots/profile.png)
+
+  # Settings Page
   ![Settings Page](/screenshots/settings.png)
 
 
@@ -68,6 +83,8 @@
 ### GIFs
 ***
 
+   # Sample for Integration testing of signup module.
+   
    ![Integration Testing](/screenshots/integration_test.gif)
 
 
