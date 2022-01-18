@@ -1,7 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:motel/app/validators/signup_validator.dart';
+import 'package:motel/generated/l10n.dart';
 
-void main() {
+void main() async {
+  
+  await S.load(Locale.fromSubtags(
+      languageCode: 'en')); // mimic localization delegate init
+
   group('Signup validations test cases', () {
     test('Empty first name', () {
       expect(
@@ -10,7 +17,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@34ghbsc')
               .validate(),
-          'Please enter your first name.');
+          S.current.pleaseEnterYourFirstName);
     });
     test('Empty last name', () {
       expect(
@@ -19,14 +26,14 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@34ghbsc')
               .validate(),
-          'Please enter your last name');
+          S.current.pleaseEnterYourLastName);
     });
     test('Empty email', () {
       expect(
           SignupValidator(
                   firstName: 'abc', lastName: 'xyz', password: '@34ghbsc')
               .validate(),
-          'Please enter email.');
+          S.current.pleaseEnterEmail);
     });
     test('Empty password', () {
       expect(
@@ -35,7 +42,7 @@ void main() {
             lastName: 'xyz',
             email: 'test@gmail.com',
           ).validate(),
-          'Please enter password.');
+          S.current.pleaseEnterPassword);
     });
     test('Invalid email', () {
       expect(
@@ -45,7 +52,7 @@ void main() {
                   email: 'test@gmail',
                   password: '@34ghbsc')
               .validate(),
-          'Please enter valid email.');
+          S.current.pleaseEnterValidEmail);
     });
     test('Invalid password 01', () {
       expect(
@@ -55,7 +62,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@34')
               .validate(),
-          'Password must be with in 6-20 characters.');
+          S.current.passwordMustBeWithIn620Characters);
     });
     test('Invalid password 02', () {
       expect(
@@ -65,7 +72,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@34444')
               .validate(),
-          'Password must include at least one upper & lower case, one special character & one numeric digit.');
+          S.current.passwordMustIncludeAtLeastOneUpperLowerCaseOne);
     });
     test('Invalid password 03', () {
       expect(
@@ -75,7 +82,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@34bfg')
               .validate(),
-          'Password must include at least one upper & lower case, one special character & one numeric digit.');
+          S.current.passwordMustIncludeAtLeastOneUpperLowerCaseOne);
     });
     test('Invalid password 04', () {
       expect(
@@ -85,7 +92,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: '@Aassa')
               .validate(),
-          'Password must include at least one upper & lower case, one special character & one numeric digit.');
+          S.current.passwordMustIncludeAtLeastOneUpperLowerCaseOne);
     });
     test('Successful validation', () {
       expect(
@@ -95,7 +102,7 @@ void main() {
                   email: 'test@gmail.com',
                   password: 'A@se2ee')
               .validate(),
-          'Validation successful.');
+          S.current.validationSuccessful);
     });
   });
 }

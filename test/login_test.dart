@@ -1,32 +1,37 @@
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:motel/app/validators/login_validator.dart';
+import 'package:motel/generated/l10n.dart';
 
-void main() {
+void main() async {
+  await S.load(Locale.fromSubtags(
+      languageCode: 'en')); // mimic localization delegate init
 
   group('Login validations test cases', () {
     test('Empty email', () {
       expect(LoginValidator(password: '@34ghbsc').validate(),
-          'Please enter email.');
+          S.current.pleaseEnterEmail);
     });
     test('Empty password', () {
       expect(LoginValidator(email: 'test@gmail.com').validate(),
-          'Please enter password.');
+          S.current.pleaseEnterPassword);
     });
     test('Invalid email', () {
       expect(
           LoginValidator(email: 'test@gmail', password: '@aA9hdd').validate(),
-          'Please enter valid email.');
+          S.current.pleaseEnterValidEmail);
     });
     test('Invalid password', () {
       expect(
           LoginValidator(email: 'test@gmail.com', password: 'ww3r').validate(),
-          'Password must be with in 6-20 characters.');
+          S.current.passwordMustBeWithIn620Characters);
     });
     test('Validation successful.', () {
       expect(
           LoginValidator(email: 'test@gmail.com', password: '@aA9hdd')
               .validate(),
-          'Validation successful.');
+          S.current.validationSuccessful);
     });
   });
 }

@@ -1,16 +1,73 @@
-# motel
+## Table of Contents
+1. [General Info](#general-info)
+2. [Screenshots](#app-screenshots)
+3. [Showcase](#tech-showcase)
+4. [Technologies](#technologies)
+5. [GIFs](#app-gifs)
 
-A new Flutter project.
+### General Info
+***
+# Hotel Template
+  This is a template project which basically explores list of hotels, rooms, popular destinations and trips. A basic search and room selection interface is also
+  implemented in this. A UI interface to view/edit user profile is also implemented. There is a setting page with basic setting options including an
+  option to change app theme(Light/Dark) as per your requirement. A basic validations for Signup & Login is also implemented in this.
+  Following is the list of some modules included in this project.
 
-## Getting Started
+  1. Login
+  2. Signup
+  3. Dashboard
+  4. Explore
+  5. Trips
+  6. Hotels
+  7. User Profile
+  8. Search
+  9. Settings
 
-This project is a starting point for a Flutter application.
+### Screenshots
+***
 
-A few resources to get you started if this is your first Flutter project:
+  ![OnBoarding Page](https://postimg.cc/8sPmsqn0)
+  ![Intro Page](https://postimg.cc/BtYcFMrQ)
+  ![Login Page](https://postimg.cc/4mYvQpGv)
+  ![Signup Page](https://postimg.cc/4YtzrZmm)
+  ![Explore Page](https://postimg.cc/dkWd8VSS)
+  ![Trips Page](https://postimg.cc/wyxLymFm)
+  ![Profile Page](https://postimg.cc/TyJn39jx)
+  ![Settings Page](https://postimg.cc/cKSQWjnT)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Showcase
+***
+
+  This project is build to Showcase following things implemented in this project.
+
+  1. Transition animations.
+  2. Unit test cases.
+  3. Integration test cases.
+  4. Basic code structure.
+  5. Localisation.
+  6. App Theme management.(Light/Dark Mode).
+
+
+### Technologies
+***
+
+   Following technologies are used in this project.
+
+   1. [intl] (https://pub.dev/packages/intl) : version ^0.17.0
+   2. [intl_utils] (https://pub.dev/packages/intl_utils) : version ^2.6.0
+   3. [integration_test] (flutter sdk)
+   4. [flutter_test] (flutter sdk)
+   5. [flutter_localizations] (flutter sdk)
+   6. [cupertino_icons] (https://pub.dev/packages/cupertino_icons) : version ^1.0.4
+   7. [font_awesome_flutter] (https://pub.dev/packages/font_awesome_flutter) : version ^9.2.0
+   8. [flutter_rating_bar] (https://pub.dev/packages/flutter_rating_bar) : version ^4.0.0
+   9. [smooth_page_indicator] (https://pub.dev/packages/smooth_page_indicator) : version ^1.0.0+2
+
+
+### GIFs
+***
+
+   ![Integration Testing] (https://giphy.com/gifs/NE5rvixPRDPRQ6J56W)
+
+

@@ -85,5 +85,6 @@
   "pleaseEnterYourFirstName": "Please enter your first name.",
   "pleaseEnterYourLastName": "Please enter your last name",
   "passwordMustIncludeOneCharacterOneNumericDigit": "Password must include one character & one numeric digit.",
-  "hotel": "Hotel"
+  "hotel": "Hotel",
+  "passwordMustIncludeAtLeastOneUpperLowerCaseOne": "Password must include at least one upper & lower case, one special character & one numeric digit."
 }
