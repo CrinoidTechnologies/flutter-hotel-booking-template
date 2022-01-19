@@ -158,6 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Text(
                         _signUpStatus.toString(),
                         key: Key('txt_error'),
+                        style: TextStyle(color: ColorHelper.errorColor),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),

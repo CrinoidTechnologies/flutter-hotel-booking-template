@@ -22,4 +22,6 @@ class ColorHelper {
   static Color get dividerColor => AppTheme.getTheme().dividerColor;
 
   static Color get bgColor => AppTheme.getTheme().backgroundColor;
+
+  static Color get errorColor => AppTheme.getTheme().errorColor;
 }
