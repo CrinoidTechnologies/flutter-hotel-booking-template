@@ -1,9 +1,9 @@
 ## Table of Contents
 1. [General Info](#general-info)
-2. [Screenshots](#app-screenshots)
-3. [Showcase](#tech-showcase)
+2. [Screenshots](#screenshots)
+3. [Showcase](#showcase)
 4. [Technologies](#technologies)
-5. [GIFs](#app-gifs)
+5. [GIFs](#gifs)
 
 ### General Info
 ***
@@ -26,29 +26,16 @@
 ### Screenshots
 ***
 
-  #### OnBoarding Page
-  ![OnBoarding Page](/screenshots/onboarding.png)
 
-  #### Intro Page
-  ![Intro Page](/screenshots/intro.png)
+ | OnBoarding Page                 | Intro Page                 | Login Page                 | Signup Page                 |
+ | -----------                     | -----------------          | -------------              | -------------               |
+ | ![](/screenshots/onboarding.png)| ![](/screenshots/intro.png)| ![](/screenshots/login.png)| ![](/screenshots/signup.png)|
 
-  #### Login Page
-  ![Login Page](/screenshots/login.png)
 
-  #### Signup Page
-  ![Signup Page](/screenshots/signup.png)
+ | Explore Page                 | Trips Page                 | Profile Page                 | Settings Page                 |
+ | -----------                  | -----------------          | -------------                | -------------                 |
+ | ![](/screenshots/explore.png)| ![](/screenshots/trips.png)| ![](/screenshots/profile.png)| ![](/screenshots/settings.png)|
 
-  #### Explore Page
-  ![Explore Page](/screenshots/explore.png)
-
-  #### Trips Page
-  ![Trips Page](/screenshots/trips.png)
-
-  #### Profile Page
-  ![Profile Page](/screenshots/profile.png)
-
-  #### Settings Page
-  ![Settings Page](/screenshots/settings.png)
 
 
 ### Showcase
