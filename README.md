@@ -37,45 +37,38 @@
  | ![](/screenshots/explore.png)| ![](/screenshots/trips.png)| ![](/screenshots/profile.png)| ![](/screenshots/settings.png)|
 
 
+#### App UX.
 
-### Showcase
-***
+   ![Transition Animations](/screenshots/transitions.gif)
+   
 
-  This project is build to Showcase following things implemented in this project.
+### Features
 
-  1. Transition animations.
-  2. Unit test cases.
-  3. Integration test cases.
-  4. Basic code structure.
-  5. Localisation.
-  6. App Theme management.(Light/Dark Mode).
+  1. Intuitive UI/UX
+  2. .
+  3. Unit test cases/Integration test cases.
+  5. Basic code structure.
+  6. Localisation.
+  7. App Theme management(Light/Dark Mode).
 
 
 ### Technologies
-***
 
    Following technologies are used in this project.
 
-   1. [intl] (https://pub.dev/packages/intl) : version ^0.17.0
-   2. [intl_utils] (https://pub.dev/packages/intl_utils) : version ^2.6.0
-   3. [integration_test] (flutter sdk)
-   4. [flutter_test] (flutter sdk)
-   5. [flutter_localizations] (flutter sdk)
-   6. [cupertino_icons] (https://pub.dev/packages/cupertino_icons) : version ^1.0.4
-   7. [font_awesome_flutter] (https://pub.dev/packages/font_awesome_flutter) : version ^9.2.0
-   8. [flutter_rating_bar] (https://pub.dev/packages/flutter_rating_bar) : version ^4.0.0
-   9. [smooth_page_indicator] (https://pub.dev/packages/smooth_page_indicator) : version ^1.0.0+2
+   1. [intl](https://pub.dev/packages/intl) : version ^0.17.0
+   2. [intl_utils](https://pub.dev/packages/intl_utils) : version ^2.6.0
+   3. [integration_test](flutter sdk)
+   4. [flutter_test](flutter sdk)
+   5. [flutter_localizations](flutter sdk)
+   6. [cupertino_icons](https://pub.dev/packages/cupertino_icons) : version ^1.0.4
+   7. [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter) : version ^9.2.0
+   8. [flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar) : version ^4.0.0
+   9. [smooth_page_indicator](https://pub.dev/packages/smooth_page_indicator) : version ^1.0.0+2
 
 
 ### GIFs
-***
 
    #### Sample for Integration testing of signup module.
 
    ![Integration Testing](/screenshots/integration_test.gif)
-
-   #### Sample for app transition animations.
-
-   ![Transition Animations](/screenshots/transitions.gif)
-
-
