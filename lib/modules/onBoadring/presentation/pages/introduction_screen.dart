@@ -104,7 +104,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       Routes.SignupPage,
                     );
                   },
-                  textColor: ColorHelper.darkColor,
+                  textColor: ColorHelper.lightColor,
                   title: S.current.createAccount,
                 )),
             SizedBox(

@@ -10,19 +10,18 @@ class AppTheme {
   static TextTheme _buildTextTheme(TextTheme base) {
     var fontName = "WorkSans";
     return base.copyWith(
-      headline6: base.headline6?.copyWith(fontFamily: fontName),
-      bodyText1: base.headline6?.copyWith(fontFamily: fontName),
-      bodyText2: base.headline6?.copyWith(fontFamily: fontName),
-      button: base.headline6?.copyWith(fontFamily: fontName),
-      caption: base.headline6?.copyWith(fontFamily: fontName),
-      headline1: base.headline6?.copyWith(fontFamily: fontName),
-      headline2: base.headline6?.copyWith(fontFamily: fontName),
-      headline3: base.headline6?.copyWith(fontFamily: fontName),
-      headline4: base.headline6?.copyWith(fontFamily: fontName),
-      headline5: base.headline6?.copyWith(fontFamily: fontName),
-      overline: base.headline6?.copyWith(fontFamily: fontName),
-      subtitle1: base.headline6?.copyWith(fontFamily: fontName),
-      subtitle2: base.headline6?.copyWith(fontFamily: fontName),
+      titleLarge: base.titleLarge?.copyWith(fontFamily: fontName),
+      titleMedium: base.titleMedium?.copyWith(fontFamily: fontName),
+      titleSmall: base.titleSmall?.copyWith(fontFamily: fontName),
+      bodyLarge: base.bodyLarge?.copyWith(fontFamily: fontName),
+      bodyMedium: base.bodyMedium?.copyWith(fontFamily: fontName),
+      bodySmall: base.bodySmall?.copyWith(fontFamily: fontName),
+      displayMedium: base.displayMedium?.copyWith(fontFamily: fontName),
+      displaySmall: base.displaySmall?.copyWith(fontFamily: fontName),
+      headlineMedium: base.headlineMedium?.copyWith(fontFamily: fontName),
+      headlineSmall: base.headlineSmall?.copyWith(fontFamily: fontName),
+      labelLarge: base.labelLarge?.copyWith(fontFamily: fontName),
+      labelSmall: base.labelSmall?.copyWith(fontFamily: fontName),
     );
   }
 
@@ -45,11 +44,11 @@ class AppTheme {
     return base.copyWith(
       colorScheme: colorScheme,
       primaryColor: primaryColor,
-      buttonColor: primaryColor,
+      // buttonColor: primaryColor,
       indicatorColor: Colors.white,
       splashColor: Colors.white24,
       splashFactory: InkRipple.splashFactory,
-      accentColor: secondaryColor,
+      // accentColor: secondaryColor,
       canvasColor: Colors.white,
       backgroundColor: const Color(0xFFFFFFFF),
       scaffoldBackgroundColor: const Color(0xFFF6F6F6),
@@ -60,7 +59,7 @@ class AppTheme {
       ),
       textTheme: _buildTextTheme(base.textTheme),
       primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-      accentTextTheme: _buildTextTheme(base.accentTextTheme),
+      // accentTextTheme: _buildTextTheme(base.accentTextTheme),
       platform: TargetPlatform.iOS,
     );
   }
@@ -76,11 +75,11 @@ class AppTheme {
     return base.copyWith(
       colorScheme: colorScheme,
       primaryColor: primaryColor,
-      buttonColor: primaryColor,
+      // buttonColor: primaryColor,
       indicatorColor: Colors.white,
       splashColor: Colors.white24,
       splashFactory: InkRipple.splashFactory,
-      accentColor: secondaryColor,
+      // accentColor: secondaryColor,
       canvasColor: Colors.white,
       backgroundColor: Colors.black,
       scaffoldBackgroundColor: const Color(0xFF0F0F0F),
@@ -90,7 +89,7 @@ class AppTheme {
       ),
       textTheme: _buildTextTheme(base.textTheme),
       primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-      accentTextTheme: _buildTextTheme(base.accentTextTheme),
+      // accentTextTheme: _buildTextTheme(base.accentTextTheme),
       platform: TargetPlatform.iOS,
     );
   }
