@@ -26,29 +26,159 @@
 ### Screenshots
 ***
 
+ | `Light Mode`                      |
+ | OnBoarding Page                   | Intro Page                     | Login Page                       | Signup Page                       |
+ | -----------                       | -----------------              | -------------                    | -------------                     |
+ | ![](/screenshots/onboarding.png)  | ![](/screenshots/intro.png)    | ![](/screenshots/login.png)      | ![](/screenshots/signup.png)      |
+ | Explore Page                      | Trips Page                     | Profile Page                     | Settings Page                     |
+ | -----------                       | -----------------              | -------------                    | -------------                     |
+ | ![](/screenshots/explore.png)     | ![](/screenshots/trips.png)    | ![](/screenshots/profile.png)    | ![](/screenshots/settings.png)    | 
+ 
+ | `Dark Mode`                       |
+ | OnBoarding Page                   | Intro Page                     | Login Page                       | Signup Page                       |
+ | -----------                       | -----------------              | -------------                    | -------------                     |
+ | ![](/screenshots/onboarding.png)  | ![](/screenshots/into_drk.png) | ![](/screenshots/login_drk.png)  | ![](/screenshots/signup_drk.png)  |
+ | Explore Page                      | Trips Page                     | Profile Page                     | Settings Page                     |
+ | -----------                       | -----------------              | -------------                    | -------------                     |
+ | ![](/screenshots/explore_drk.png) | ![](/screenshots/trips_drk.png)| ![](/screenshots/profile_drk.png)| ![](/screenshots/settings_drk.png)|
 
- | OnBoarding Page                 | Intro Page                 | Login Page                 | Signup Page                 |
- | -----------                     | -----------------          | -------------              | -------------               |
- | ![](/screenshots/onboarding.png)| ![](/screenshots/intro.png)| ![](/screenshots/login.png)| ![](/screenshots/signup.png)|
 
 
- | Explore Page                 | Trips Page                 | Profile Page                 | Settings Page                 |
- | -----------                  | -----------------          | -------------                | -------------                 |
- | ![](/screenshots/explore.png)| ![](/screenshots/trips.png)| ![](/screenshots/profile.png)| ![](/screenshots/settings.png)|
-
-
-
-### Showcase
+### Features
 ***
 
   This project is build to Showcase following things implemented in this project.
 
   1. Transition animations.
-  2. Unit test cases.
-  3. Integration test cases.
-  4. Basic code structure.
-  5. Localisation.
-  6. App Theme management.(Light/Dark Mode).
+  2. Unit test cases/Integration test cases.
+  3. Basic code structure.
+  4. Localisation.
+  5. App Theme management.(Light/Dark Mode).
+
+
+
+### Folder Structure
+***
+
+```
+├── app
+│   ├── ui
+│   │   ├── appTheme.dart
+│   │   └── color_helper.dart
+│   └── validators
+│       ├── login_validator.dart
+│       └── signup_validator.dart
+├── generated
+│   ├── intl
+│   │   ├── messages_all.dart
+│   │   └── messages_en_US.dart
+│   └── l10n.dart
+├── l10n
+│   └── intl_en_US.arb
+├── main.dart
+└── modules
+    ├── _common
+    │   ├── entity
+    │   │   └── slider_entity.dart
+    │   └── widget
+    │       ├── rating_bar_widget.dart
+    │       ├── round_corner_text_input_widget.dart
+    │       ├── round_corners_button_widget.dart
+    │       └── selectable_title_widget.dart
+    ├── authentication
+    │   ├── domain
+    │   │   └── entities
+    │   │       ├── login_entity.dart
+    │   │       └── signup_entity.dart
+    │   └── preseentation
+    │       ├── pages
+    │       │   ├── login_page.dart
+    │       │   └── signup_page.dart
+    │       └── widget
+    ├── dashboard
+    │   └── presentation
+    │       └── pages
+    │           └── dashboard_page.dart
+    ├── explore
+    │   └── presentation
+    │       ├── pages
+    │       │   └── explore_page.dart
+    │       └── widget
+    │           ├── explore_item_header_widget.dart
+    │           ├── explore_slider_widget.dart
+    │           ├── popular_destination_list_widget.dart
+    │           └── popular_destination_row_widget.dart
+    ├── hotel
+    │   ├── domain
+    │   │   └── entities
+    │   │       └── hotel_entity.dart
+    │   └── presentation
+    │       ├── pages
+    │       │   ├── hotel_details_page.dart
+    │       │   ├── hotel_list_landing_page.dart
+    │       │   ├── review_list_page.dart
+    │       │   └── room_list_page.dart
+    │       └── widget
+    │           ├── calendar_popup_widget.dart
+    │           ├── custom_calendar_widget.dart
+    │           ├── hotel_map_view_row_widget.dart
+    │           ├── hotel_rating_widget.dart
+    │           ├── hotel_row_one_widget.dart
+    │           ├── hotel_row_three_widget.dart
+    │           ├── hotel_row_two_widget.dart
+    │           ├── review_list_row_widget.dart
+    │           ├── room_images_widget.dart
+    │           ├── room_list_row_widget.dart
+    │           └── room_range_selection_widget.dart
+    ├── myTrips
+    │   └── presentation
+    │       ├── pages
+    │       │   ├── favorite_trips_page.dart
+    │       │   ├── finished_trips_page.dart
+    │       │   ├── my_trips_page.dart
+    │       │   └── upcoming_trips_page.dart
+    │       └── widget
+    ├── onBoadring
+    │   └── presentation
+    │       └── pages
+    │           ├── introduction_screen.dart
+    │           └── splash_screen.dart
+    ├── password_recovery
+    │   └── presentation
+    │       └── pages
+    │           ├── change_password_page.dart
+    │           └── forgot_password_page.dart
+    ├── profile
+    │   └── presentation
+    │       ├── pages
+    │       │   ├── edit_profile_page.dart
+    │       │   ├── feedback_page.dart
+    │       │   ├── help_center_page.dart
+    │       │   ├── invite_page.dart
+    │       │   └── profile_page.dart
+    │       └── widgets
+    ├── search
+    │   ├── domain
+    │   │   └── entities
+    │   │       └── filter_entity.dart
+    │   └── presentation
+    │       ├── pages
+    │       │   ├── filters_page.dart
+    │       │   └── search_page.dart
+    │       └── widgets
+    │           ├── range_slider_widget.dart
+    │           ├── search_types_widget.dart
+    │           └── slider_widget.dart
+    └── settings
+        ├── domain
+        │   └── entities
+        │       └── setting_entity.dart
+        └── presentation
+            └── pages
+                ├── country_list_page.dart
+                ├── currency_list_page.dart
+                └── settings_page.dart
+```
 
 
 ### Technologies
