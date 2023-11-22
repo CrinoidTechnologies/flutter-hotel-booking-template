@@ -1,9 +1,10 @@
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Screenshots](#screenshots)
-3. [Showcase](#showcase)
-4. [Technologies](#technologies)
-5. [GIFs](#gifs)
+3. [Features](#features)
+4. [Folder Structure](#folder-structure)
+5. [Technologies](#technologies)
+6. [GIFs](#gifs)
 
 ### General Info
 ***
