@@ -55,3 +55,4 @@ android/.gradle
 ios/.symlinks
 ios/Pods
 ios/Flutter
+local.properties
