@@ -51,3 +51,4 @@ config/prod
 config/stg
 ios/build
 trials-release.jks
+android/.gradle
