@@ -9,7 +9,7 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="Motel">
+        android:label="@string/otelier">
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
