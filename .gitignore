@@ -52,3 +52,5 @@ config/stg
 ios/build
 trials-release.jks
 android/.gradle
+ios/.symlinks
+ios/Pods
