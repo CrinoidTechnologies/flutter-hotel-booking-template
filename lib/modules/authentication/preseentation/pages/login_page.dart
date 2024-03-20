@@ -183,12 +183,20 @@ class _LoginPageState extends State<LoginPage> {
   Widget getFTButton({bool isFacebook: true}) {
     return isFacebook
         ? RoundCornerButtonWidget(
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Routes.TabScreen, (Route<dynamic> route) => false);
+            },
             title: S.of(context).facebook,
             bgColor: ColorHelper.facebookColor,
             prefixIcon:
                 Icon(FontAwesomeIcons.facebookF, size: 20, color: Colors.white),
           )
         : RoundCornerButtonWidget(
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Routes.TabScreen, (Route<dynamic> route) => false);
+            },
             title: S.of(context).twitter,
             bgColor: ColorHelper.twitterColor,
             prefixIcon:
