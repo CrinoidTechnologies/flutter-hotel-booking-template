@@ -54,3 +54,4 @@ trials-release.jks
 android/.gradle
 ios/.symlinks
 ios/Pods
+ios/Flutter
